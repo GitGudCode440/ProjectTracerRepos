@@ -13,8 +13,6 @@ func _process(delta) -> void:
 	
 	direction = (Input.get_action_strength("right") - Input.get_action_strength("left"))
 	
-	
-	
 	shoot()
 
 func _physics_process(delta) -> void:
@@ -49,8 +47,13 @@ func jump() -> void:
 func shoot() -> void:
 	
 	if Input.is_action_just_pressed("shoot"):
-		var shoot_position = get_local_mouse_position().normalized()
 		var bulletInstance = bullet.instance()
+		var shoot_position = get_local_mouse_position().normalized()
+		
 		add_child(bulletInstance)
+		bulletInstance.set_direction(shoot_position)
+		
+		
+		
 	
 	
