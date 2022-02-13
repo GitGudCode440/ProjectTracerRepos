@@ -7,13 +7,15 @@ export(int) var jumpSpeed
 var velocity : Vector2 = Vector2.ZERO
 var direction : float
 
-
+var bullet = preload("res://src/Bullet/Bullet/Bullet.tscn")
 
 func _process(delta) -> void:
 	
 	direction = (Input.get_action_strength("right") - Input.get_action_strength("left"))
 	
 	
+	
+	shoot()
 
 func _physics_process(delta) -> void:
 	
@@ -44,6 +46,11 @@ func jump() -> void:
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = -jumpSpeed
 	
+func shoot() -> void:
 	
+	if Input.is_action_just_pressed("shoot"):
+		var shoot_position = get_local_mouse_position().normalized()
+		var bulletInstance = bullet.instance()
+		add_child(bulletInstance)
 	
 	
