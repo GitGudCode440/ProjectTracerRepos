@@ -48,9 +48,9 @@ func shoot() -> void:
 	
 	if Input.is_action_just_pressed("shoot"):
 		var bulletInstance = bullet.instance()
-		var shoot_position = get_local_mouse_position().normalized()
-		
 		add_child(bulletInstance)
+		
+		var shoot_position = get_local_mouse_position().normalized()
 		bulletInstance.set_direction(shoot_position)
 		
 		
