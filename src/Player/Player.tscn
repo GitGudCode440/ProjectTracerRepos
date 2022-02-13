@@ -6,6 +6,7 @@
 extents = Vector2( 20, 20 )
 
 [node name="Player" type="KinematicBody2D"]
+z_index = 1
 script = ExtResource( 1 )
 speed = 500
 gravity = 9.8
