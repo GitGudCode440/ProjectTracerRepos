@@ -18,4 +18,11 @@ func set_direction(_direction) -> void:
 	direction = _direction
 	
 	var angleOfRotation = Vector2.RIGHT.angle_to(direction)
-	$ColorRect.set_rotation(angleOfRotation)
+	
+	$Sprite.rotate(angleOfRotation)
+	$CollisionShape2D.rotate(angleOfRotation)
+
+
+func _on_VisibilityNotifier2D_screen_exited():
+	queue_free()
+	
