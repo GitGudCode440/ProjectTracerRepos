@@ -26,7 +26,11 @@ func _physics_process(delta) -> void:
 	
 func move() -> void:
 	
-	velocity.x = direction * speed
+	if abs(direction) > 0:
+		velocity.x = lerp(0, direction * speed, 0.8)
+	else:
+		velocity.x = lerp(velocity.x, 0, 0.8)
+		
 	
 func apply_gravity() -> void:
 	
@@ -39,7 +43,6 @@ func jump() -> void:
 	
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = -jumpSpeed
-	
 	
 	
 	
