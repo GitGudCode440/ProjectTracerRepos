@@ -1,23 +1,23 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://src/Bullet/Bullet/Bullet.gd" type="Script" id=1]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 18.5, 10 )
 
 [node name="Bullet" type="Area2D"]
 monitorable = false
 script = ExtResource( 1 )
 speed = 10
 
-[node name="ColorRect" type="ColorRect" parent="."]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -28.0
-margin_top = -2.5
-margin_right = 28.0
-margin_bottom = 2.5
-rect_pivot_offset = Vector2( 28, 2 )
-color = Color( 0, 0.607843, 0.847059, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 3, 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource( 1 )
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+visible = false
+
+[connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
