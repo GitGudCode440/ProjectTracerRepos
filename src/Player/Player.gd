@@ -7,7 +7,7 @@ export(int) var jumpSpeed
 var velocity : Vector2 = Vector2.ZERO
 var direction : float
 
-var bullet = preload("res://src/Bullet/Bullet/Bullet.tscn")
+var bullet = preload("res://src/Bullet/PlayerBullet/PlayerBullet.tscn")
 
 func _process(delta) -> void:
 	
@@ -46,7 +46,7 @@ func jump() -> void:
 	
 func shoot() -> void:
 	
-	if Input.is_action_just_pressed("shoot"):
+	if Input.is_action_pressed("shoot"):
 		var bulletInstance = bullet.instance()
 		add_child(bulletInstance)
 		
