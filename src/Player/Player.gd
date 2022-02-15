@@ -54,6 +54,6 @@ func shoot() -> void:
 		bulletInstance.set_direction(shoot_position)
 		
 		
-		
+	
 	
 	
