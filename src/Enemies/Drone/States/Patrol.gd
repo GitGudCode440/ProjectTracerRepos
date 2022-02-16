@@ -2,17 +2,14 @@ extends State
 
 func enter() -> void:
 	player.direction = 1
-	print('ffff')
 	
 func logic(delta) -> void:
-	print('llll')
 	detect_ledge()
 
 
 func physics_logic(delta) -> void:
 	player.velocity.x = player.direction * player.speed
 	
-	print('bbbbb')
 
 func apply_gravity(delta) -> void:
 	
@@ -21,15 +18,15 @@ func apply_gravity(delta) -> void:
 	else:
 		player.velocity.y = 1
 
-	print('szszszs')
 	
 func detect_ledge() -> void:
 	
 	
+	print(player.ledgeDetector.is_colliding())
 	
-	if player.ledgeDetector.is_colliding() == null:
-		print("----------")
+	if !player.ledgeDetector.is_colliding():
 		change_direction()
 
 func change_direction() -> void:
 	player.direction = -player.direction
+	player.ledgeDetector.position.x = player.ledgeOffset * player.direction
