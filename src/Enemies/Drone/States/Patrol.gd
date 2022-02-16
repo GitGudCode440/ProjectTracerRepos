@@ -22,9 +22,8 @@ func apply_gravity(delta) -> void:
 func detect_ledge() -> void:
 	
 	
-	print(player.ledgeDetector.is_colliding())
 	
-	if !player.ledgeDetector.is_colliding():
+	if !player.ledgeDetector.is_colliding() and player.is_on_floor():
 		change_direction()
 
 func change_direction() -> void:
