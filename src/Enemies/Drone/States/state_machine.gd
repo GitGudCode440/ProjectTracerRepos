@@ -5,7 +5,7 @@ onready var states : Dictionary = {
 	"CHASE" : $Chase
 }
 
-var player : KinematicBody2D = get_parent()
+onready var player : KinematicBody2D = get_parent()
 
 var current_state : Node = null
 
@@ -14,7 +14,6 @@ func enter() -> void:
 	current_state = states.PATROL
 	
 	for child in get_children():
-		child.stateMachine = self
 		child.player = player
 	
 	current_state.enter()
@@ -25,8 +24,17 @@ func logic(delta) -> void:
 	current_state.logic(delta)
 
 func physics_logic(delta) -> void:
-	current_state.logic(delta)
+	current_state.physics_logic(delta)
 	
 	
-func set_state() -> Node:
-	return null
+func apply_gravity(delta) -> void:
+	current_state.apply_gravity(delta)
+
+	
+func set_state() -> void:
+	
+	var transition : Node = current_state.get_transition()
+	
+	if transition != null:
+		current_state = transition
+		current_state.enter()
