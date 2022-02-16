@@ -18,10 +18,16 @@ _global_script_classes=[ {
 "class": "GitAPI",
 "language": "NativeScript",
 "path": "res://addons/godot-git-plugin/git_api.gdns"
+}, {
+"base": "Node",
+"class": "State",
+"language": "GDScript",
+"path": "res://src/Enemies/Drone/States/State.gd"
 } ]
 _global_script_class_icons={
 "Bullet": "",
-"GitAPI": ""
+"GitAPI": "",
+"State": ""
 }
 
 [application]
