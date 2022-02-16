@@ -1,5 +1,11 @@
 extends Node
 
+onready var states : Dictionary = {
+	"PATROL" : $Patrol,
+	"CHASE" : $Chase
+}
+
+var player : KinematicBody2D = get_parent()
 
 
 
