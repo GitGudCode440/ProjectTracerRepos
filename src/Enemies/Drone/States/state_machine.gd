@@ -7,16 +7,18 @@ onready var states : Dictionary = {
 
 var player : KinematicBody2D = get_parent()
 
-
+var current_state : Node = null
 
 
 func enter() -> void:
+	
+	
 	pass
 
-func logic() -> void:
+func logic(delta) -> void:
 	pass
 
-func physics_logic() -> void:
+func physics_logic(delta) -> void:
 	pass
 
 func set_state() -> Node:
