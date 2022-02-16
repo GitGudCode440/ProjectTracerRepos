@@ -1,7 +1,6 @@
 extends Node
 class_name State
 
-var state_machine = null
 var player : KinematicBody2D = null
 
 func enter() -> void:
@@ -12,6 +11,10 @@ func logic(delta) -> void:
 
 func physics_logic(delta) -> void:
 	pass
+
+func apply_gravity(delta) -> void:
+	pass
+
 
 func get_transition() -> Node:
 	return null 
