@@ -10,7 +10,7 @@ onready var ledgeDetector  : RayCast2D = $LedgeDetector
 var ledgeOffset : int = 20
 
 onready var fieldOfView : RayCast2D = $FieldOfView
-onready var player : KinematicBody2D = get_tree().get_root().find_node("Player", true, false)
+
 
 onready var states : Node = $States
 
@@ -25,3 +25,4 @@ func _physics_process(delta):
 	
 	move_and_slide(velocity, Vector2.UP)
 	
+	states.apply_gravity(delta)
