@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://src/Enemies/Drone/Drone.gd" type="Script" id=1]
 [ext_resource path="res://src/Enemies/Drone/States/state_machine.gd" type="Script" id=2]
+[ext_resource path="res://src/Enemies/Drone/States/Patrol.gd" type="Script" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 20, 20 )
@@ -46,5 +47,6 @@ collision_mask = 2
 script = ExtResource( 2 )
 
 [node name="Patrol" type="Node" parent="States"]
+script = ExtResource( 3 )
 
 [node name="Chase" type="Node" parent="States"]
