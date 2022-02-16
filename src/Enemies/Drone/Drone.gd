@@ -27,6 +27,7 @@ func _physics_process(delta):
 	detect_objects()
 	move_and_slide(velocity, Vector2.UP)
 	
+	
 	on_collsion_wall()
 	
 	apply_gravity()
