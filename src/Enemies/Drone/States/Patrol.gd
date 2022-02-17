@@ -11,7 +11,7 @@ func physics_logic(delta) -> void:
 	player.velocity.x = player.direction * player.speed
 	
 
-func apply_gravity(delta) -> void:
+func on_collisions(delta) -> void:
 	
 	if !player.is_on_floor():
 		player.velocity.y += player.gravity
