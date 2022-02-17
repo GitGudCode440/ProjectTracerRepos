@@ -13,11 +13,7 @@ func physics_logic(delta) -> void:
 
 func on_collisions(delta) -> void:
 	
-	if !player.is_on_floor():
-		player.velocity.y += player.gravity
-	else:
-		player.velocity.y = 1
-
+	apply_gravity()
 	
 func detect_ledge() -> void:
 	
@@ -29,3 +25,11 @@ func detect_ledge() -> void:
 func change_direction() -> void:
 	player.direction = -player.direction
 	player.ledgeDetector.position.x = player.ledgeOffset * player.direction
+
+func apply_gravity() -> void:
+	
+	if !player.is_on_floor():
+		player.velocity.y += player.gravity
+	else:
+		player.velocity.y = 1
+
