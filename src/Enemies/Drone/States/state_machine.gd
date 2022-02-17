@@ -5,12 +5,13 @@ onready var states : Dictionary = {
 	"CHASE" : $Chase
 }
 
-onready var player : KinematicBody2D = get_parent()
+onready var player : KinematicBody2D 
 
 var current_state : Node = null
 
 
-func enter() -> void:
+func enter(_player) -> void:
+	player = _player
 	current_state = states.PATROL
 	
 	for child in get_children():
@@ -27,8 +28,8 @@ func physics_logic(delta) -> void:
 	current_state.physics_logic(delta)
 	
 	
-func apply_gravity(delta) -> void:
-	current_state.apply_gravity(delta)
+func on_collisions(delta) -> void:
+	current_state.on_collisions(delta)
 
 	
 func set_state() -> void:
