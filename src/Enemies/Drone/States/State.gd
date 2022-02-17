@@ -12,7 +12,7 @@ func logic(delta) -> void:
 func physics_logic(delta) -> void:
 	pass
 
-func apply_gravity(delta) -> void:
+func on_collisions(delta) -> void:
 	pass
 
 
