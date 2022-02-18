@@ -36,6 +36,9 @@ func apply_gravity() -> void:
 func get_transition() -> Node:
 	
 	#Checks if the drone has detected a player.
-	#If so, transition to 'Chase' state
+	#If so, transition to 'Chase' state.
 	
-	return null
+	if drone.fieldOfView.get_collider() == player:
+		return states.CHASE
+	else:
+		return null
