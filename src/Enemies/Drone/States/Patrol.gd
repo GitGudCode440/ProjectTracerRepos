@@ -33,7 +33,7 @@ func apply_gravity() -> void:
 	else:
 		drone.velocity.y = 1
 
-func get_transition() -> Node:
+func get_transition(delta) -> Node:
 	
 	#Checks if the drone has detected a player.
 	#If so, transition to 'Chase' state.
