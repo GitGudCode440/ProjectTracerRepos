@@ -13,6 +13,7 @@ var ledgeOffset : int = 20
 
 onready var fieldOfView : RayCast2D = $FieldOfView
 
+onready var collider : CollisionShape2D = $CollisionShape2D
 
 onready var states : Node = $States
 
