@@ -2,6 +2,9 @@ extends Node
 class_name State
 
 var drone : KinematicBody2D = null
+var player : KinematicBody2D = null
+
+var states : Dictionary = {}
 
 func enter() -> void:
 	pass
