@@ -13,7 +13,7 @@ var current_state : Node = null
 
 func enter(_drone, _player) -> void:
 	drone = _drone
-	player = _drone
+	player = _player
 	
 	current_state = states.PATROL
 	
@@ -29,7 +29,7 @@ func enter(_drone, _player) -> void:
 
 func logic(delta) -> void:
 	current_state.logic(delta)
-	set_state()
+	set_state(delta)
 
 func physics_logic(delta) -> void:
 	current_state.physics_logic(delta)
@@ -39,9 +39,9 @@ func on_collisions(delta) -> void:
 	current_state.on_collisions(delta)
 
 	
-func set_state() -> void:
+func set_state(delta) -> void:
 	
-	var transition : Node = current_state.get_transition()
+	var transition : Node = current_state.get_transition(delta)
 	
 	if transition != null:
 		current_state = transition
