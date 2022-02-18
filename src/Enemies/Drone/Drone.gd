@@ -12,6 +12,7 @@ onready var ledgeDetector  : RayCast2D = $LedgeDetector
 var ledgeOffset : int = 20
 
 onready var fieldOfView : RayCast2D = $FieldOfView
+var fovCast : int = 400
 
 onready var collider : CollisionShape2D = $CollisionShape2D
 
