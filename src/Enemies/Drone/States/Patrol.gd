@@ -1,14 +1,14 @@
 extends State
 
 func enter() -> void:
-	player.direction = 1
+	drone.direction = 1
 	
 func logic(delta) -> void:
 	detect_ledge()
 
 
 func physics_logic(delta) -> void:
-	player.velocity.x = player.direction * player.speed
+	drone.velocity.x = drone.direction * drone.speed
 	
 
 func on_collisions(delta) -> void:
@@ -19,17 +19,23 @@ func detect_ledge() -> void:
 	
 	
 	
-	if !player.ledgeDetector.is_colliding() and player.is_on_floor():
+	if !drone.ledgeDetector.is_colliding() and drone.is_on_floor():
 		change_direction()
 
 func change_direction() -> void:
-	player.direction = -player.direction
-	player.ledgeDetector.position.x = player.ledgeOffset * player.direction
+	drone.direction = -drone.direction
+	drone.ledgeDetector.position.x = drone.ledgeOffset * drone.direction
 
 func apply_gravity() -> void:
 	
-	if !player.is_on_floor():
-		player.velocity.y += player.gravity
+	if !drone.is_on_floor():
+		drone.velocity.y += drone.gravity
 	else:
-		player.velocity.y = 1
+		drone.velocity.y = 1
 
+func get_transition() -> Node:
+	
+	#Checks if the drone has detected a player.
+	#If so, transition to 'Chase' state
+	
+	return null
