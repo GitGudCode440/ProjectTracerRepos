@@ -1,7 +1,7 @@
 extends Node
 class_name State
 
-var player : KinematicBody2D = null
+var drone : KinematicBody2D = null
 
 func enter() -> void:
 	pass
