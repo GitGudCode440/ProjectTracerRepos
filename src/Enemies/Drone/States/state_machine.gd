@@ -5,17 +5,17 @@ onready var states : Dictionary = {
 	"CHASE" : $Chase
 }
 
-onready var player : KinematicBody2D 
+onready var drone : KinematicBody2D 
 
 var current_state : Node = null
 
 
-func enter(_player) -> void:
-	player = _player
+func enter(_drone) -> void:
+	drone = _drone
 	current_state = states.PATROL
 	
 	for child in get_children():
-		child.player = player
+		child.drone = self.drone
 	
 	current_state.enter()
 	
