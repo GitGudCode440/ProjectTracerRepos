@@ -38,6 +38,7 @@ func get_transition(delta) -> Node:
 	#Checks if the drone has detected a player.
 	#If so, transition to 'Chase' state.
 	
+	
 	if drone.fieldOfView.get_collider() == player:
 		return states.CHASE
 	else:
