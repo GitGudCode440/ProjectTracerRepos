@@ -15,7 +15,11 @@ func logic(delta) -> void:
 	
 func physics_logic(delta) -> void:
 	
+	if directionToPlayer.length() < 200:
+		drone.velocity = lerp(drone.velocity, Vector2.ZERO, 0.05)
+	else:
+		drone.velocity = directionToPlayer.normalized() * chaseSpeed
 	
-	drone.velocity = directionToPlayer * chaseSpeed
 	
+	print(drone.global_position)
 	
