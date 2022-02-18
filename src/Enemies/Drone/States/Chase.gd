@@ -1,7 +1,21 @@
 extends State
 
+var directionToPlayer : Vector2 = Vector2.ZERO
+var chaseSpeed : int = 300
+
+func enter() -> void:
+	
+	drone.collider.queue_free()
+
+
 func logic(delta) -> void:
 	
-	var directionToPlayer : Vector2 = (player.position - drone.position).normalized()  
+	directionToPlayer = (player.global_position - drone.global_position)
+	
+	
+func physics_logic(delta) -> void:
+	
+	
+	drone.velocity = directionToPlayer * chaseSpeed
 	
 	
