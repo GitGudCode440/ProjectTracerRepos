@@ -25,6 +25,7 @@ func detect_ledge() -> void:
 func change_direction() -> void:
 	drone.direction = -drone.direction
 	drone.ledgeDetector.position.x = drone.ledgeOffset * drone.direction
+	drone.fieldOfView.cast_to.x = drone.fovCast * drone.direction
 
 func apply_gravity() -> void:
 	
