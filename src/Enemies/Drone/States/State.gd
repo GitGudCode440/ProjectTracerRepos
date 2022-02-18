@@ -19,5 +19,5 @@ func on_collisions(delta) -> void:
 	pass
 
 
-func get_transition() -> Node:
+func get_transition(delta) -> Node:
 	return null 
