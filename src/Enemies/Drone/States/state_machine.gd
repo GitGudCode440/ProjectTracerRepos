@@ -29,6 +29,7 @@ func enter(_drone, _player) -> void:
 
 func logic(delta) -> void:
 	current_state.logic(delta)
+	set_state()
 
 func physics_logic(delta) -> void:
 	current_state.physics_logic(delta)
