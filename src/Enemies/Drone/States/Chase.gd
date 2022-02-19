@@ -2,7 +2,7 @@ extends State
 
 var directionToPlayer : Vector2 = Vector2.ZERO
 var chaseSpeed : int = 300
-var enemyLaser : Resource = preload("res://src/Bullet/EnemyBullet/EnemyBullet.tscn")
+var enemyBullet : Resource = preload("res://src/Bullet/EnemyBullet/EnemyBullet.tscn")
 
 func enter() -> void:
 	
@@ -27,7 +27,7 @@ func physics_logic(delta) -> void:
 	
 func shoot() -> void:
 	
-	var instance = enemyLaser.instance()
+	var instance = enemyBullet.instance()
 	
 	drone.add_child(instance)
 	instance.set_direction(directionToPlayer.normalized())
