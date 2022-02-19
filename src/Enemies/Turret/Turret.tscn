@@ -6,7 +6,7 @@
 extents = Vector2( 14, 45 )
 
 [sub_resource type="CircleShape2D" id=2]
-radius = 526.001
+radius = 341.5
 
 [node name="Turret" type="StaticBody2D"]
 collision_layer = 7
