@@ -7,7 +7,7 @@ export(int) var jumpSpeed
 var velocity : Vector2 = Vector2.ZERO
 var direction : float
 
-var bullet = preload("res://src/Bullet/PlayerBullet/PlayerBullet.tscn")
+var bullet : Resource = preload("res://src/Bullet/PlayerBullet/PlayerBullet.tscn")
 
 func _process(delta) -> void:
 	
