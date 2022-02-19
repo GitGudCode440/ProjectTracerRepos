@@ -7,13 +7,15 @@ var currentState : int
 var enemyLaser : Resource = preload("res://src/Bullet/EnemyBullet/EnemyBullet.tscn")
 
 onready var player : KinematicBody2D = get_tree().get_root().find_node("Player", true, false)
-var directionToPlayer : Vector2 = (player.global_position - global_position)
+var directionToPlayer : Vector2 
 
 
 func _ready():
 	currentState = states.IDLE
 	
 func _process(delta):
+	
+	directionToPlayer = (player.global_position - global_position)
 	
 	if currentState == states.SHOOT:
 		shoot()
@@ -33,7 +35,7 @@ func _on_Area2D_body_exited(body):
 	
 func shoot() -> void:
 	
-	var instance = enemyLaser
+	var instance = enemyLaser.instance()
 	
 	add_child(instance)
 	
