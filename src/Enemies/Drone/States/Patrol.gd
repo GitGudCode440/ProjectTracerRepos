@@ -17,17 +17,24 @@ func on_collisions(delta) -> void:
 	
 func detect_ledge() -> void:
 	
-	
+	#Changes the direction, if the drone is on a ledge
 	
 	if !drone.ledgeDetector.is_colliding() and drone.is_on_floor():
 		change_direction()
 
 func change_direction() -> void:
+	
+	
 	drone.direction = -drone.direction
+	
+	#Orients the rays according to the direction.
+	
 	drone.ledgeDetector.position.x = drone.ledgeOffset * drone.direction
 	drone.fieldOfView.cast_to.x = drone.fovCast * drone.direction
 
 func apply_gravity() -> void:
+	
+	#Applies graviity to drone if not is on floor
 	
 	if !drone.is_on_floor():
 		drone.velocity.y += drone.gravity
@@ -38,7 +45,6 @@ func get_transition(delta) -> Node:
 	
 	#Checks if the drone has detected a player.
 	#If so, transition to 'Chase' state.
-	
 	
 	if drone.fieldOfView.get_collider() == player:
 		return states.CHASE
