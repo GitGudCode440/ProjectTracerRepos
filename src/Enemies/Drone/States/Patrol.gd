@@ -16,8 +16,8 @@ func on_collisions(delta) -> void:
 	apply_gravity()
 	
 func detect_ledge() -> void:
-	
 	#Changes the direction, if the drone is on a ledge
+	
 	
 	if !drone.ledgeDetector.is_colliding() and drone.is_on_floor():
 		change_direction()
