@@ -1,10 +1,16 @@
 extends State
 
 var directionToPlayer : Vector2 = Vector2.ZERO
-var chaseSpeed : int = 300
+export(int) var chaseSpeed
+var shootTimer : Timer = Timer.new()
+
 var enemyBullet : Resource = preload("res://src/Bullet/EnemyBullet/EnemyBullet.tscn")
 
+
 func enter() -> void:
+	
+	add_child(shootTimer)
+	
 	
 	
 	drone.ledgeDetector.queue_free()
@@ -19,7 +25,12 @@ func logic(delta) -> void:
 	# in relation to itself.
 	directionToPlayer = (player.global_position - drone.global_position)
 	
-	shoot()
+	
+	
+	if shootTimer.is_stopped():
+		shootTimer.wait_time = 3.0
+		shootTimer.start()
+		shoot()
 	
 func physics_logic(delta) -> void:
 	
@@ -34,11 +45,13 @@ func shoot() -> void:
 	
 func chase() -> void:
 	
+	#If the drone is at a distance of more than 300 units, chase
+	#Otherwise, slowly stop.
 	
-	if directionToPlayer.length() < 200:
-		drone.velocity = lerp(drone.velocity, Vector2.ZERO, 0.05)
-	else:
+	if directionToPlayer.length() > 300:
 		drone.velocity = directionToPlayer.normalized() * chaseSpeed
+	else:
+		drone.velocity = lerp(drone.velocity, Vector2.ZERO, 0.2)
 	
 	
 	
