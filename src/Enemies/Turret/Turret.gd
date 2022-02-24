@@ -17,6 +17,7 @@ func _process(delta):
 	
 	directionToPlayer = (player.global_position - global_position)
 	
+	
 	if currentState == states.SHOOT:
 		shoot()
 	
