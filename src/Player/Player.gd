@@ -9,11 +9,13 @@ var direction : float
 
 var bullet : Resource = preload("res://src/Bullet/PlayerBullet/PlayerBullet.tscn")
 
+
 func _process(delta) -> void:
 	
 	direction = (Input.get_action_strength("right") - Input.get_action_strength("left"))
 	
-	shoot()
+	if Input.is_action_just_pressed("shoot"):
+		shoot()
 
 func _physics_process(delta) -> void:
 	
@@ -46,14 +48,17 @@ func jump() -> void:
 	
 func shoot() -> void:
 	
-	if Input.is_action_pressed("shoot"):
-		var bulletInstance = bullet.instance()
-		add_child(bulletInstance)
-		
-		var shoot_position = get_local_mouse_position().normalized()
-		bulletInstance.set_direction(shoot_position)
-		
-		
+	
+	var bulletInstance = bullet.instance()
+	
+	
+	add_child(bulletInstance)
+	
+	var shoot_position = get_local_mouse_position().normalized()
+	bulletInstance.set_direction(shoot_position)
+	
+	
+	
 	
 	
 	
