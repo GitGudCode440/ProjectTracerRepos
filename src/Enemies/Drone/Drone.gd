@@ -19,7 +19,7 @@ onready var states : Node = $States
 onready var player : KinematicBody2D = get_tree().get_root().find_node("Player", true, false)
 
 func _ready():
-	states.enter(player)
+	states.enter(self, player)
 
 func _process(delta):
 	states.logic(delta)
