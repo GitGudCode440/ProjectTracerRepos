@@ -9,19 +9,23 @@ var enemyLaser : Resource = preload("res://src/Bullet/EnemyBullet/EnemyBullet.ts
 onready var player : KinematicBody2D = get_tree().get_root().find_node("Player", true, false)
 var directionToPlayer : Vector2 
 
+var shootTimer : Timer = Timer.new()
+var shootTime : float = 0.4
 
 func _ready():
 	currentState = states.IDLE
+	
+	add_child(shootTimer)
+	
+	shootTimer.connect("timeout", self, "on_ShootTimer_timeout")
+	shootTimer.start(shootTime)
+	
 	
 func _process(delta):
 	
 	directionToPlayer = (player.global_position - global_position)
 	
 	
-	if currentState == states.SHOOT:
-		shoot()
-	
-
 
 func _on_Area2D_body_entered(body):
 	if body == player:
@@ -41,4 +45,9 @@ func shoot() -> void:
 	add_child(instance)
 	
 	instance.set_direction(directionToPlayer.normalized())
+	
+func on_ShootTimer_timeout() -> void:
+	if currentState == states.SHOOT:
+		shoot()
+	
 	
