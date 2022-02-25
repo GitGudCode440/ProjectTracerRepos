@@ -2,16 +2,22 @@ extends State
 
 var directionToPlayer : Vector2 = Vector2.ZERO
 export(int) var chaseSpeed
-var shootTimer : Timer = Timer.new()
 
 var enemyBullet : Resource = preload("res://src/Bullet/EnemyBullet/EnemyBullet.tscn")
 
+var shootTimer : Timer = Timer.new()
+var shootTime : float = 0.5
 
 func enter() -> void:
 	
+	
 	add_child(shootTimer)
 	
+	shootTimer.connect("timeout", self, "on_ShootTimer_timeout")
+	shootTimer.start(shootTime)
 	
+	yield(get_tree(), "idle_frame")
+	shoot()
 	
 	drone.ledgeDetector.queue_free()
 	drone.fieldOfView.queue_free()
@@ -26,11 +32,6 @@ func logic(delta) -> void:
 	directionToPlayer = (player.global_position - drone.global_position)
 	
 	
-	
-	if shootTimer.is_stopped():
-		shootTimer.wait_time = 3.0
-		shootTimer.start()
-		shoot()
 	
 func physics_logic(delta) -> void:
 	
@@ -54,5 +55,8 @@ func chase() -> void:
 		drone.velocity = lerp(drone.velocity, Vector2.ZERO, 0.2)
 	
 	
+func on_ShootTimer_timeout():
 	
+	shoot()
+	shootTimer.start(shootTime)
 	
