@@ -1,17 +1,15 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://src/Enemies/Turret/Turret.gd" type="Script" id=1]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 14, 45 )
 
-[sub_resource type="CircleShape2D" id=2]
-radius = 341.5
-
 [node name="Turret" type="StaticBody2D"]
 collision_layer = 7
 collision_mask = 2
 script = ExtResource( 1 )
+detectionRange = 700
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchor_left = 0.5
@@ -27,14 +25,10 @@ __meta__ = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource( 1 )
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="LineOfSight" type="RayCast2D" parent="."]
+rotation = 1.5708
+cast_to = Vector2( 0, 450 )
 collision_mask = 2
-monitorable = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource( 2 )
-
-[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
-[connection signal="body_exited" from="Area2D" to="." method="_on_Area2D_body_exited"]
