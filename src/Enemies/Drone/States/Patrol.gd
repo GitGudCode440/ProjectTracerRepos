@@ -1,55 +1,55 @@
 extends State
 
 func enter() -> void:
-	drone.direction = 1
+	host.direction = 1
 	
 func logic(delta) -> void:
 	detect_ledge()
 
 
 func physics_logic(delta) -> void:
-	drone.velocity.x = drone.direction * drone.speed
+	host.velocity.x = host.direction * host.speed
 	
 
 func on_collisions(delta) -> void:
 	
 	apply_gravity()
 	
-	if drone.is_on_wall():
+	if host.is_on_wall():
 		change_direction()
 	
 func detect_ledge() -> void:
 	#Changes the direction, if the drone is on a ledge
 	
 	
-	if !drone.ledgeDetector.is_colliding() and drone.is_on_floor():
+	if !host.ledgeDetector.is_colliding() && host.is_on_floor():
 		change_direction()
 
 func change_direction() -> void:
 	
 	
-	drone.direction = -drone.direction
+	host.direction = -host.direction
 	
 	#Orients the rays according to the direction.
 	
-	drone.ledgeDetector.position.x = drone.ledgeOffset * drone.direction
-	drone.fieldOfView.cast_to.x = drone.fovCast * drone.direction
+	host.ledgeDetector.position.x = host.ledgeOffset * host.direction
+	host.fieldOfView.cast_to.x = host.fovCast * host.direction
 
 func apply_gravity() -> void:
 	
 	#Applies graviity to drone if not is on floor
 	
-	if !drone.is_on_floor():
-		drone.velocity.y += drone.gravity
+	if !host.is_on_floor():
+		host.velocity.y += host.gravity
 	else:
-		drone.velocity.y = 1
+		host.velocity.y = 1
 
 func get_transition(delta) -> Node:
 	
 	#Checks if the drone has detected a player.
 	#If so, transition to 'Chase' state.
 	
-	if drone.fieldOfView.get_collider() == player:
+	if host.fieldOfView.get_collider() == player:
 		return states.CHASE
 	else:
 		return null
