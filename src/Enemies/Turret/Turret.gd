@@ -1,12 +1,17 @@
 extends StaticBody2D
 
+export(int) var detectionRange 
+
 enum states {IDLE, SHOOT}
 var currentState : int 
 
-var enemyLaser : Resource = preload("res://src/Bullet/EnemyBullet/EnemyBullet.tscn")
+onready var lineOfSight : RayCast2D = $LineOfSight
+
+onready var enemyLaser : Resource = preload("res://src/Bullet/EnemyBullet/EnemyBullet.tscn")
 
 onready var player : KinematicBody2D = get_tree().get_root().find_node("Player", true, false)
-var directionToPlayer : Vector2 
+var distanceToPlayer : Vector2 
+var directionToPlayer : Vector2
 
 var shootTimer : Timer = Timer.new()
 var shootTime : float = 0.35
@@ -22,18 +27,26 @@ func _ready():
 	
 func _process(delta):
 	
-	directionToPlayer = (player.global_position - global_position)
+	distanceToPlayer = (player.global_position - global_position)
+	directionToPlayer = distanceToPlayer.normalized()
 	
 	
-func _on_Area2D_body_entered(body):
-	if body == player:
-		currentState = states.SHOOT
-
-func _on_Area2D_body_exited(body):
+	var angleOfRotation = directionToPlayer.angle_to(Vector2.DOWN)
+	lineOfSight.rotation = -angleOfRotation
 	
-	if body == player:
-		currentState = states.IDLE
 	
+	if distanceToPlayer.length() < detectionRange:
+		lineOfSight.enabled = true
+		
+		
+		if lineOfSight.get_collider() == player:
+			currentState = states.SHOOT
+		else:
+			currentState = states.IDLE
+			
+	else:
+		lineOfSight.enabled = false
+		
 	
 func shoot() -> void:
 	
