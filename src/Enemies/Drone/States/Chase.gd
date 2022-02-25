@@ -40,7 +40,7 @@ func shoot() -> void:
 	var instance = enemyBullet.instance()
 	
 	host.add_child(instance)
-	instance.set_direction(directionToPlayer.normalized())
+	instance.set_direction(directionToPlayer)
 	
 func chase() -> void:
 	
