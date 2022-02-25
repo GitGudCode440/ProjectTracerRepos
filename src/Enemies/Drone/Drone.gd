@@ -6,8 +6,6 @@ export(float) var gravity
 var velocity : Vector2 = Vector2.ZERO
 var direction : float
 
-onready var player : KinematicBody2D = get_tree().get_root().find_node("Player", true, false)
-
 onready var ledgeDetector  : RayCast2D = $LedgeDetector
 var ledgeOffset : int = 20
 
@@ -18,8 +16,10 @@ onready var collider : CollisionShape2D = $CollisionShape2D
 
 onready var states : Node = $States
 
+onready var player : KinematicBody2D = get_tree().get_root().find_node("Player", true, false)
+
 func _ready():
-	states.enter(self, player)
+	states.enter(player)
 
 func _process(delta):
 	states.logic(delta)
