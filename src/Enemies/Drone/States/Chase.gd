@@ -16,7 +16,6 @@ func enter() -> void:
 	shootTimer.connect("timeout", self, "on_ShootTimer_timeout")
 	shootTimer.start(shootTime)
 	
-	shoot()
 	
 	host.ledgeDetector.queue_free()
 	host.fieldOfView.queue_free()
@@ -28,8 +27,8 @@ func logic(delta) -> void:
 	
 	# Assigning a vector which gives us direction and ditstance of the player,
 	# in relation to itself.
-	directionToPlayer = (player.global_position - host.global_position)
 	
+	directionToPlayer = (player.global_position - host.global_position)
 	
 	
 func physics_logic(delta) -> void:
