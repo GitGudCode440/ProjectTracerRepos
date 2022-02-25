@@ -16,7 +16,10 @@ func _process(delta) -> void:
 	
 	if Input.is_action_just_pressed("shoot"):
 		shoot()
-
+	
+	if global_position.y > 4000:
+		get_tree().reload_current_scene()
+	
 func _physics_process(delta) -> void:
 	
 	
@@ -25,6 +28,7 @@ func _physics_process(delta) -> void:
 	
 	apply_gravity()
 	jump()
+	
 	
 func move() -> void:
 	
