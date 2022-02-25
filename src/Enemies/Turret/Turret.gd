@@ -43,10 +43,11 @@ func _process(delta):
 			currentState = states.SHOOT
 		else:
 			currentState = states.IDLE
-			
+		
+		
 	else:
 		lineOfSight.enabled = false
-		
+	
 	
 func shoot() -> void:
 	
