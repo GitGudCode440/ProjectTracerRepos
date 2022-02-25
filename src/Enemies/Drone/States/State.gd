@@ -18,6 +18,5 @@ func physics_logic(delta) -> void:
 func on_collisions(delta) -> void:
 	pass
 
-
 func get_transition(delta) -> Node:
 	return null 
