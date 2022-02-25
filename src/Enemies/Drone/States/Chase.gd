@@ -16,20 +16,19 @@ func enter() -> void:
 	shootTimer.connect("timeout", self, "on_ShootTimer_timeout")
 	shootTimer.start(shootTime)
 	
-	yield(get_tree(), "idle_frame")
 	shoot()
 	
-	drone.ledgeDetector.queue_free()
-	drone.fieldOfView.queue_free()
+	host.ledgeDetector.queue_free()
+	host.fieldOfView.queue_free()
 	
-	drone.collider.queue_free()
+	host.collider.queue_free()
 
 
 func logic(delta) -> void:
 	
 	# Assigning a vector which gives us direction and ditstance of the player,
 	# in relation to itself.
-	directionToPlayer = (player.global_position - drone.global_position)
+	directionToPlayer = (player.global_position - host.global_position)
 	
 	
 	
@@ -41,7 +40,7 @@ func shoot() -> void:
 	
 	var instance = enemyBullet.instance()
 	
-	drone.add_child(instance)
+	host.add_child(instance)
 	instance.set_direction(directionToPlayer.normalized())
 	
 func chase() -> void:
@@ -50,9 +49,9 @@ func chase() -> void:
 	#Otherwise, slowly stop.
 	
 	if directionToPlayer.length() > 300:
-		drone.velocity = directionToPlayer.normalized() * chaseSpeed
+		host.velocity = directionToPlayer.normalized() * chaseSpeed
 	else:
-		drone.velocity = lerp(drone.velocity, Vector2.ZERO, 0.2)
+		host.velocity = lerp(host.velocity, Vector2.ZERO, 0.2)
 	
 	
 func on_ShootTimer_timeout():
