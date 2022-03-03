@@ -53,3 +53,4 @@ script = ExtResource( 3 )
 [node name="Chase" type="Node" parent="States"]
 script = ExtResource( 4 )
 chaseSpeed = 300
+shootTime = 0.5
