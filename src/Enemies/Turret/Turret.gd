@@ -14,7 +14,7 @@ var distanceToPlayer : Vector2
 var directionToPlayer : Vector2
 
 var shootTimer : Timer = Timer.new()
-var shootTime : float = 0.35
+export(float) var shootTime
 
 func _ready():
 	currentState = states.IDLE
