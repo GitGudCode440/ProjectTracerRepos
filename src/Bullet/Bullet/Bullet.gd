@@ -30,5 +30,5 @@ func _on_VisibilityNotifier2D_screen_exited():
 
 func _on_Bullet_body_entered(body):
 	
-	if body.name == "Player":
+	if body.collision_mask != get_parent().collision_mask:
 		queue_free()
