@@ -1,11 +1,11 @@
 extends State
 
 export(int) var chaseSpeed
+export(float)var shootTime
 
 var enemyBullet : Resource = preload("res://src/Bullet/EnemyBullet/EnemyBullet.tscn")
 
 var shootTimer : Timer = Timer.new()
-var shootTime : float = 0.5
 
 var distanceToPlayer : Vector2 
 var directionToPlayer : Vector2
@@ -22,7 +22,8 @@ func enter() -> void:
 	host.ledgeDetector.queue_free()
 	host.fieldOfView.queue_free()
 	
-	host.collider.queue_free()
+	host.collision_layer = 4
+	host.collision_mask = 4
 
 
 func logic(delta) -> void:
