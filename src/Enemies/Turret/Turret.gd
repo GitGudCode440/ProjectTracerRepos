@@ -1,5 +1,6 @@
 extends StaticBody2D
 
+export(int) var lives
 export(int) var detectionRange 
 
 enum states {IDLE, SHOOT}
@@ -27,23 +28,28 @@ func _ready():
 	
 func _process(delta):
 	
+	#Checks if lives are zero
+	check_lives()
+	
+	#Stores distance and direction to the player
 	distanceToPlayer = (player.global_position - global_position)
 	directionToPlayer = distanceToPlayer.normalized()
 	
 	
+	#Calculates the amount of rotation needed in relation to the player
+	#And sets RayCast rotation to the rotation
 	var angleOfRotation = directionToPlayer.angle_to(Vector2.DOWN)
 	lineOfSight.rotation = -angleOfRotation
 	
 	
+	#Code for detection
 	if distanceToPlayer.length() < detectionRange:
 		lineOfSight.enabled = true
-		
 		
 		if lineOfSight.get_collider() == player:
 			currentState = states.SHOOT
 		else:
 			currentState = states.IDLE
-		
 		
 	else:
 		lineOfSight.enabled = false
@@ -62,3 +68,10 @@ func on_ShootTimer_timeout() -> void:
 		shoot()
 	
 	
+func take_damage() -> void:
+	lives -= 1
+	print("how")
+
+func check_lives() -> void:
+	if lives == 0:
+		queue_free()
