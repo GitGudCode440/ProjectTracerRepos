@@ -19,8 +19,8 @@ func enter() -> void:
 	shootTimer.start(shootTime)
 	
 	
-	host.ledgeDetector.queue_free()
-	host.fieldOfView.queue_free()
+	host.collision_layer = 4
+	host.collision_mask = 1
 	
 	host.collider.queue_free()
 
