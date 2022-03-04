@@ -1,5 +1,6 @@
 extends KinematicBody2D
 
+export(int) var lives
 export(int) var speed
 export(float) var gravity
 
@@ -18,15 +19,23 @@ onready var states : Node = $States
 
 onready var player : KinematicBody2D = get_tree().get_root().find_node("Player", true, false)
 
-func _ready():
+func _ready() -> void:
 	states.enter(self, player)
 
-func _process(delta):
+func _process(delta) -> void:
 	states.logic(delta)
+	check_lives()
 
-func _physics_process(delta):
+func _physics_process(delta) -> void:
 	states.physics_logic(delta)
 	
 	move_and_slide(velocity, Vector2.UP)
 	
 	states.on_collisions(delta)
+
+func take_damage() -> void:
+	lives -= 1
+
+func check_lives() -> void:
+	if lives == 0:
+		queue_free()
