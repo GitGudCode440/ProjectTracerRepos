@@ -1,8 +1,11 @@
 extends KinematicBody2D
 
+export(int) var lives
+
 export(int) var speed
-export(float) var gravity
 export(int) var jumpSpeed
+
+export(float) var gravity
 
 var velocity : Vector2 = Vector2.ZERO
 var direction : float
@@ -11,6 +14,8 @@ var bullet : Resource = preload("res://src/Bullet/PlayerBullet/PlayerBullet.tscn
 
 
 func _process(delta) -> void:
+	
+	check_lives()
 	
 	direction = (Input.get_action_strength("right") - Input.get_action_strength("left"))
 	
@@ -61,8 +66,12 @@ func shoot() -> void:
 	var shoot_position = get_local_mouse_position().normalized()
 	bulletInstance.set_direction(shoot_position)
 	
+func check_lives() -> void:
+	if lives == 0:
+		get_tree().reload_current_scene()
 	
+func take_damage() -> void:
 	
-	
+	lives -= 1
 	
 	
