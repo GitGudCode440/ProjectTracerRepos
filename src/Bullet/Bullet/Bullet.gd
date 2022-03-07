@@ -29,7 +29,8 @@ func _on_VisibilityNotifier2D_screen_exited():
 	
 
 func _on_Bullet_body_entered(body):
-	print(body)
 	
 	if body.has_method("take_damage"):
 		body.call_deferred("take_damage")
+	
+	queue_free()
