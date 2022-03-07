@@ -22,7 +22,6 @@ func enter() -> void:
 	host.collision_layer = 4
 	host.collision_mask = 1
 	
-	host.collider.queue_free()
 
 func logic(delta) -> void:
 	
