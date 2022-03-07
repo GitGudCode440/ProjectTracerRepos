@@ -70,8 +70,8 @@ func on_ShootTimer_timeout() -> void:
 	
 func take_damage() -> void:
 	lives -= 1
-	print("how")
 
-func check_lives() -> void:
+func check_lives() -> void: #Checks if lives are zero
+	
 	if lives == 0:
 		queue_free()
