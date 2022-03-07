@@ -8,9 +8,10 @@ extents = Vector2( 20, 20 )
 [node name="Player" type="KinematicBody2D"]
 collision_mask = 14
 script = ExtResource( 1 )
+lives = 12
 speed = 500
 gravity = 9.8
-jumpSpeed = 700
+jumpSpeed = 600
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchor_right = 1.0
