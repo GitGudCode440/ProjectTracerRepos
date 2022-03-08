@@ -15,6 +15,7 @@ script = ExtResource( 1 )
 lives = 10
 speed = 80
 gravity = 9.8
+detectionRange = 800
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchor_left = 0.5
