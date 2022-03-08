@@ -4,6 +4,10 @@ export(int) var lives
 export(int) var speed
 export(float) var gravity
 
+export(int) var detectionRange
+
+var distanceToPlayer : Vector2
+
 var velocity : Vector2 = Vector2.ZERO
 var direction : float
 
@@ -23,8 +27,16 @@ func _ready() -> void:
 	states.enter(self, player)
 
 func _process(delta) -> void:
-	states.logic(delta)
 	check_lives()
+	
+	distanceToPlayer = (player.global_position - global_position)
+	
+	if distanceToPlayer.length() < detectionRange:
+		fieldOfView.enabled = true
+	else:
+		fieldOfView.enabled = false
+	
+	states.logic(delta)
 
 func _physics_process(delta) -> void:
 	states.physics_logic(delta)
