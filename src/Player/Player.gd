@@ -1,5 +1,11 @@
 extends KinematicBody2D
 
+""" 
+	This is used for move and sliding kinematic body according to variables
+	defined by input. It is also where shooting and animation mechanisms are
+	implemented. Also has a life system
+"""
+
 export(int) var lives
 
 export(int) var speed
@@ -12,10 +18,22 @@ var direction : float
 
 var bullet : Resource = preload("res://src/Bullet/PlayerBullet/PlayerBullet.tscn")
 
+onready var animatedSprite : AnimatedSprite = $AnimatedSprite
+
+func take_damage() -> void: #Called by enemies to inflict damage on Player
+	
+	lives -= 1
+
+func _ready():
+	
+	animatedSprite.play("idle")
+
 
 func _process(delta) -> void:
 	
 	check_lives()
+	animate()
+	
 	
 	direction = (Input.get_action_strength("right") - Input.get_action_strength("left"))
 	
@@ -35,6 +53,26 @@ func _physics_process(delta) -> void:
 	jump()
 	
 	
+func check_lives() -> void:
+	if lives == 0:
+		get_tree().reload_current_scene()
+		
+	
+func animate() -> void:
+	
+	
+	if direction > 0:
+		animatedSprite.flip_h = false
+		animatedSprite.play("run")
+	elif direction < 0:
+		animatedSprite.flip_h = true
+		animatedSprite.play("run")
+	else:
+		animatedSprite.play("idle")
+	
+	
+	
+
 func move() -> void:
 	
 	if abs(direction) > 0:
@@ -54,6 +92,7 @@ func jump() -> void:
 	
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = -jumpSpeed
+		animatedSprite.play("jump")
 	
 func shoot() -> void:
 	
@@ -66,12 +105,5 @@ func shoot() -> void:
 	var shoot_position = get_local_mouse_position().normalized()
 	bulletInstance.set_direction(shoot_position)
 	
-func check_lives() -> void:
-	if lives == 0:
-		get_tree().reload_current_scene()
-	
-func take_damage() -> void:
-	
-	lives -= 1
 	
 	
