@@ -1,5 +1,10 @@
 extends Node
 
+"""
+	This is the state manager or machine which delegates processes and info
+	to children states according to a given transition retruned by the states.
+"""
+
 onready var states : Dictionary = {
 	"PATROL" : $Patrol,
 	"CHASE" : $Chase
