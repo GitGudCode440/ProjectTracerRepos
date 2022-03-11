@@ -1,5 +1,9 @@
 extends State
 
+"""
+	The state for patrolling the environment for drone
+"""
+
 func enter() -> void:
 	host.direction = 1
 	
