@@ -1,31 +1,59 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://src/Player/Player.gd" type="Script" id=1]
+[ext_resource path="res://src/Player/sprites/idle/idle-1.png" type="Texture" id=2]
+[ext_resource path="res://src/Player/sprites/idle/idle-2.png" type="Texture" id=3]
+[ext_resource path="res://src/Player/sprites/idle/idle-3.png" type="Texture" id=4]
+[ext_resource path="res://src/Player/sprites/idle/idle-4.png" type="Texture" id=5]
+[ext_resource path="res://src/Player/sprites/run/run-8.png" type="Texture" id=6]
+[ext_resource path="res://src/Player/sprites/run/run-7.png" type="Texture" id=7]
+[ext_resource path="res://src/Player/sprites/run/run-5.png" type="Texture" id=8]
+[ext_resource path="res://src/Player/sprites/run/run-4.png" type="Texture" id=9]
+[ext_resource path="res://src/Player/sprites/run/run-6.png" type="Texture" id=10]
+[ext_resource path="res://src/Player/sprites/run/run-1.png" type="Texture" id=11]
+[ext_resource path="res://src/Player/sprites/run/run-3.png" type="Texture" id=12]
+[ext_resource path="res://src/Player/sprites/run/run-2.png" type="Texture" id=13]
+[ext_resource path="res://src/Player/sprites/jump/jump-3.png" type="Texture" id=14]
+[ext_resource path="res://src/Player/sprites/jump/jump-4.png" type="Texture" id=15]
+[ext_resource path="res://src/Player/sprites/jump/jump-2.png" type="Texture" id=16]
+[ext_resource path="res://src/Player/sprites/jump/jump-1.png" type="Texture" id=17]
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "idle",
+"speed": 8.0
+}, {
+"frames": [ ExtResource( 17 ), ExtResource( 16 ), ExtResource( 14 ), ExtResource( 15 ) ],
+"loop": false,
+"name": "jump",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 11 ), ExtResource( 13 ), ExtResource( 12 ), ExtResource( 9 ), ExtResource( 8 ), ExtResource( 10 ), ExtResource( 7 ), ExtResource( 6 ) ],
+"loop": true,
+"name": "run",
+"speed": 8.0
+} ]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 20, 20 )
+extents = Vector2( 12, 24 )
 
 [node name="Player" type="KinematicBody2D"]
 collision_mask = 14
 script = ExtResource( 1 )
-lives = 12
+lives = 5
 speed = 500
-gravity = 9.8
 jumpSpeed = 600
+gravity = 9.8
 
-[node name="ColorRect" type="ColorRect" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -20.0
-margin_top = -20.0
-margin_right = 20.0
-margin_bottom = 20.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 2 )
+animation = "jump"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
+position = Vector2( 0, 8 )
 shape = SubResource( 1 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
