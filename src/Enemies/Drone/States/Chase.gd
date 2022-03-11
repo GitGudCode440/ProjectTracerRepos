@@ -1,7 +1,11 @@
 extends State
 
+"""
+	The state for chasing the player for drone
+"""
+
 export(int) var chaseSpeed
-export(float)var shootTime
+export(float) var shootTime
 
 var enemyBullet : Resource = preload("res://src/Bullet/EnemyBullet/EnemyBullet.tscn")
 
