@@ -1,5 +1,12 @@
 extends KinematicBody2D
 
+""" 
+	This is the parent script which possess variables for move and slide which are 
+	modified by states. Also it delegates processes and necessary info to State
+	Machine which delegates process to children states according to a transition. 
+	It has a implementation for checking lives.
+"""
+
 export(int) var lives
 export(int) var speed
 export(float) var gravity
