@@ -13,6 +13,8 @@ export(int) var jumpSpeed
 
 export(float) var gravity
 
+var isJumping : bool = false
+
 var velocity : Vector2 = Vector2.ZERO
 var direction : float
 
@@ -27,6 +29,7 @@ func take_damage() -> void: #Called by enemies to inflict damage on Player
 func _ready():
 	
 	animatedSprite.play("idle")
+	
 
 
 func _process(delta) -> void:
@@ -61,6 +64,11 @@ func check_lives() -> void:
 func animate() -> void:
 	
 	
+	if isJumping:
+		animatedSprite.play("jump")
+		return 
+	
+	
 	if direction > 0:
 		animatedSprite.flip_h = false
 		animatedSprite.play("run")
@@ -90,9 +98,19 @@ func apply_gravity() -> void:
 
 func jump() -> void:
 	
+	if is_on_floor():
+		isJumping = false 
+		print("Set false")
+	
+	
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = -jumpSpeed
 		animatedSprite.play("jump")
+		isJumping = true
+		print("Set true")
+	
+	
+
 	
 func shoot() -> void:
 	
