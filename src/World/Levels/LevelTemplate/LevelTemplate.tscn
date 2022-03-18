@@ -35,7 +35,7 @@ points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
 position = Vector2( -1, 0 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 413, 201 )
+position = Vector2( 547, 441 )
 
 [node name="TileMap" type="TileMap" parent="."]
 scale = Vector2( 2, 2 )
@@ -61,7 +61,7 @@ position = Vector2( 2289, 1055 )
 [node name="Drone" type="Node" parent="."]
 
 [node name="Drone" parent="Drone" instance=ExtResource( 3 )]
-position = Vector2( 1218, 395 )
+position = Vector2( 1166, 389 )
 z_index = 2
 
 [node name="Drone2" parent="Drone" instance=ExtResource( 3 )]
