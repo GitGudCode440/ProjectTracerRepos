@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://src/Enemies/Drone/Drone.gd" type="Script" id=1]
-[ext_resource path="res://src/Enemies/Drone/States/state_machine.gd" type="Script" id=2]
+[ext_resource path="res://src/StateMachine/state_machine.gd" type="Script" id=2]
 [ext_resource path="res://src/Enemies/Drone/States/Patrol.gd" type="Script" id=3]
 [ext_resource path="res://src/Enemies/Drone/States/Chase.gd" type="Script" id=4]
 
@@ -9,6 +9,7 @@
 extents = Vector2( 20, 20 )
 
 [node name="Drone" type="KinematicBody2D"]
+position = Vector2( -1, 0 )
 collision_layer = 2
 collision_mask = 7
 script = ExtResource( 1 )
@@ -47,6 +48,10 @@ cast_to = Vector2( 500, 0 )
 
 [node name="States" type="Node" parent="."]
 script = ExtResource( 2 )
+states = {
+"CHASE": NodePath("Chase"),
+"PATROL": NodePath("Patrol")
+}
 
 [node name="Patrol" type="Node" parent="States"]
 script = ExtResource( 3 )
