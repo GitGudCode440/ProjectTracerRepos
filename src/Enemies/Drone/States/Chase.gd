@@ -4,6 +4,9 @@ extends State
 	The state for chasing the player for drone
 """
 
+#Redefining target as player for better readibility
+var player : KinematicBody2D = target 
+
 export(int) var chaseSpeed
 export(float) var shootTime
 
