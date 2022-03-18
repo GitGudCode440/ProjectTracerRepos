@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://src/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://src/Player/sprites/idle/idle-1.png" type="Texture" id=2]
@@ -17,6 +17,8 @@
 [ext_resource path="res://src/Player/sprites/jump/jump-4.png" type="Texture" id=15]
 [ext_resource path="res://src/Player/sprites/jump/jump-2.png" type="Texture" id=16]
 [ext_resource path="res://src/Player/sprites/jump/jump-1.png" type="Texture" id=17]
+[ext_resource path="res://src/Player/States/Idle.gd" type="Script" id=18]
+[ext_resource path="res://src/Player/States/Run.gd" type="Script" id=19]
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
@@ -38,6 +40,64 @@ animations = [ {
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 12, 24 )
+
+[sub_resource type="GDScript" id=3]
+script/source = "extends Node
+class_name StateMachine
+
+\"\"\"
+	This is the state manager or machine which delegates processes and info
+	to children states according to a given transition retruned by the states.
+\"\"\"
+
+export (Dictionary) onready var states
+
+onready var host : KinematicBody2D = null
+
+#A kinematic body entity which can be interacted to perform some logic 
+onready var target : KinematicBody2D = null 
+
+
+var current_state : Node = null
+
+
+func enter(_host, _target) -> void:
+	
+	
+	host = _host
+	target = _target
+	
+	
+	
+	for child in get_children():
+		child.target = self.target
+		child.host = self.host
+		child.states = self.states
+	
+	current_state.enter()
+	
+	pass
+
+func logic(delta) -> void:
+	current_state.logic(delta)
+	set_state(delta)
+
+func physics_logic(delta) -> void:
+	current_state.physics_logic(delta)
+	
+	
+func on_collisions(delta) -> void:
+	current_state.on_collisions(delta)
+
+	
+func set_state(delta) -> void:
+	
+	var transition : Node = current_state.get_transition(delta)
+	
+	if transition != null:
+		current_state = transition
+		current_state.enter()
+"
 
 [node name="Player" type="KinematicBody2D"]
 position = Vector2( -1, 0 )
@@ -63,3 +123,16 @@ position = Vector2( 348, 0 )
 current = true
 zoom = Vector2( 1.2, 1.2 )
 smoothing_enabled = true
+
+[node name="States" type="Node" parent="."]
+script = SubResource( 3 )
+states = {
+"IDLE": NodePath("Idle"),
+"RUN": NodePath("Run")
+}
+
+[node name="Idle" type="Node" parent="States"]
+script = ExtResource( 18 )
+
+[node name="Run" type="Node" parent="States"]
+script = ExtResource( 19 )
