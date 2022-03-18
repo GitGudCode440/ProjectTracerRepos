@@ -4,6 +4,9 @@ extends State
 	The state for patrolling the environment for drone
 """
 
+#Redefining target as player for better readibility
+var player : KinematicBody2D = target
+
 func enter() -> void:
 	host.direction = 1
 	
@@ -50,7 +53,7 @@ func apply_gravity() -> void:
 
 func get_transition(delta) -> Node:
 	
-	#Checks if the drone has detected a player.
+	#Checks if the drone has detected Player.
 	#If so, transition to 'Chase' state.
 	
 	if host.fieldOfView.get_collider() == player:
