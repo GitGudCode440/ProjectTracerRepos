@@ -4,11 +4,14 @@ class_name State
 var host : KinematicBody2D = null
 var target : KinematicBody2D = null
 
+var animatedSprite : AnimatedSprite = null
+var animation : String
+
 
 var states : Dictionary = {}
 
 func enter() -> void:
-	pass
+	animatedSprite.play(animation)
 
 func logic(delta) -> void:
 	pass
@@ -19,5 +22,5 @@ func physics_logic(delta) -> void:
 func on_collisions(delta) -> void:
 	pass
 
-func get_transition(delta) -> Node:
-	return null 
+func get_transition(delta):
+	return null
