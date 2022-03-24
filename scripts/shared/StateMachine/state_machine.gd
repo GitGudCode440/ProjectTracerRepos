@@ -9,21 +9,24 @@ class_name StateMachine
 export (Dictionary) onready var states
 
 
-export (NodePath) var current_state_path
-var current_state : Node = null
+export (NodePath) var first_state
+var current_state : Node 
 
 
-func enter(_host, _target) -> void:
+func enter(_host : KinematicBody2D,
+			_target : KinematicBody2D,
+			_animatedSprite : AnimatedSprite) -> void:
 	
-	set_states()
 	
-	current_state = get_node(current_state_path)
+	
+	current_state = get_node(first_state)
 	
 	for child in get_children():
 		child.target = _target
 		child.host = _host
+		child.animatedSprite = _animatedSprite
 		child.states = self.states
-	
+		
 	
 	
 	current_state.enter()
@@ -44,11 +47,18 @@ func on_collisions(delta) -> void:
 	
 func set_state(delta) -> void:
 	
-	var transition : Node = current_state.get_transition(delta)
+	var transition : NodePath
+	
+	if !current_state.get_transition(delta):
+		return
+	else:
+		transition  = current_state.get_transition(delta)
 	
 	if transition != null:
-		current_state = transition
+		current_state = get_node(transition)
 		current_state.enter()
-
-func set_states() -> void:
-	pass
+	
+	
+	
+	
+	 
