@@ -31,7 +31,7 @@ onready var states : Node = $States
 onready var player : KinematicBody2D = get_tree().get_root().find_node("Player", true, false)
 
 func _ready() -> void:
-	states.enter(self, player) #Passing itself and target
+	states.enter(self, player, null) #Passing itself and target
 
 func _process(delta) -> void:
 	check_lives()
