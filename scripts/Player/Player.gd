@@ -33,7 +33,7 @@ func check_lives() -> void:
 	
 func _ready():
 	
-	states.enter(self, null)
+	states.enter(self, null, animatedSprite)
 
 
 func _process(delta) -> void:
@@ -50,15 +50,21 @@ func _process(delta) -> void:
 	
 func _physics_process(delta) -> void:
 	
+	
 	states.physics_logic(delta)
 	
 	velocity = move_and_slide(velocity, Vector2.UP)
 	
+	apply_gravity()
 	states.on_collisions(delta)
 	
 	
-
+func apply_gravity() -> void:
 	
+	if !is_on_floor():
+		velocity.y += gravity
+	else:
+		velocity.y = 1
 
 	
 
