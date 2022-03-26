@@ -9,7 +9,7 @@
 position = Vector2( -1, 0 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 547, 441 )
+position = Vector2( 1195, 379 )
 
 [node name="TileMap" type="TileMap" parent="."]
 scale = Vector2( 2, 2 )
@@ -35,7 +35,7 @@ position = Vector2( 2289, 1055 )
 [node name="Drone" type="Node" parent="."]
 
 [node name="Drone" parent="Drone" instance=ExtResource( 3 )]
-position = Vector2( 1166, 389 )
+position = Vector2( 1356, 392 )
 z_index = 2
 
 [node name="Drone2" parent="Drone" instance=ExtResource( 3 )]
