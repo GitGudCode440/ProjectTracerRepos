@@ -6,15 +6,14 @@ func enter() -> void:
 	animation = idleAnimation
 	.enter()
 	
-	if host.direction > 0:
-		pass
-	
 	
 	host.velocity.x = host.direction * host.speed
 
 func get_transition(delta):
 	
-	if abs(host.direction) > 0:
+	if Input.is_action_just_pressed("jump") and host.is_on_floor()  :
+		return states.JUMP
+	elif abs(host.direction) > 0:
 		return states.RUN
 	else:
 		return null
