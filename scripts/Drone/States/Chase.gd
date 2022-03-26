@@ -4,8 +4,7 @@ extends State
 	The state for chasing the player for drone
 """
 
-#Redefining target as player for better readibility
-var player : KinematicBody2D = target
+var player : KinematicBody2D
 
 export(int) var chaseSpeed
 export(float) var shootTime
@@ -18,6 +17,8 @@ var directionToPlayer : Vector2
 
 func enter() -> void:
 	
+	#Redefining target as player for better readibility
+	player = target
 	
 	add_child(shootTimer)
 	
