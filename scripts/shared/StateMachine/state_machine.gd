@@ -14,8 +14,7 @@ var current_state : Node
 
 
 func enter(_host : KinematicBody2D,
-			_target : KinematicBody2D,
-			_animatedSprite : AnimatedSprite) -> void:
+			_target : KinematicBody2D) -> void:
 	
 	
 	
@@ -24,7 +23,6 @@ func enter(_host : KinematicBody2D,
 	for child in get_children():
 		child.target = _target
 		child.host = _host
-		child.animatedSprite = _animatedSprite
 		child.states = self.states
 		
 	
