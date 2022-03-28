@@ -3,8 +3,7 @@ extends State
 var idleAnimation : String = "idle"
  
 func enter() -> void:
-	animation = idleAnimation
-	.enter()
+	host.animatedSprite.play(idleAnimation)
 	
 	
 	host.velocity.x = host.direction * host.speed
