@@ -19,7 +19,12 @@ _global_script_classes=[ {
 "language": "NativeScript",
 "path": "res://addons/godot-git-plugin/git_api.gdns"
 }, {
-"base": "Node",
+"base": "State",
+"class": "Run",
+"language": "GDScript",
+"path": "res://scripts/Player/States/Run.gd"
+}, {
+"base": "CanvasItem",
 "class": "State",
 "language": "GDScript",
 "path": "res://scripts/shared/StateMachine/State.gd"
@@ -32,6 +37,7 @@ _global_script_classes=[ {
 _global_script_class_icons={
 "Bullet": "",
 "GitAPI": "",
+"Run": "",
 "State": "",
 "StateMachine": ""
 }
