@@ -1,28 +1,14 @@
-extends State
+extends Run
 
 var jumpAnimation : String = "jump"
-var jumpTimer : Timer = Timer.new()
 
 
 func enter() -> void:
-	animation = jumpAnimation
-	.enter()
+	host.animatedSprite.play(jumpAnimation)
 	
 	
 	host.velocity.y = -host.jumpSpeed
 
-func logic(delta) -> void:
-	
-	if host.direction > 0: 
-		animatedSprite.flip_h = false
-	elif host.direction <  0:
-		animatedSprite.flip_h = true
-
-
-func physics_logic(delta) -> void:
-	
-	host.velocity.x = host.direction * host.speed
-	
 
 func get_transition(delta):
 	
