@@ -47,11 +47,6 @@ animations = [ {
 "name": "shoot",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 9 ), ExtResource( 14 ), ExtResource( 10 ), ExtResource( 17 ), ExtResource( 5 ), ExtResource( 8 ), ExtResource( 4 ), ExtResource( 12 ) ],
-"loop": true,
-"name": "run",
-"speed": 8.0
-}, {
 "frames": [ ExtResource( 19 ), ExtResource( 18 ), ExtResource( 11 ), ExtResource( 15 ) ],
 "loop": false,
 "name": "jump",
@@ -61,6 +56,11 @@ animations = [ {
 "loop": true,
 "name": "run_shoot",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 9 ), ExtResource( 14 ), ExtResource( 10 ), ExtResource( 17 ), ExtResource( 5 ), ExtResource( 8 ), ExtResource( 4 ), ExtResource( 12 ) ],
+"loop": true,
+"name": "run",
+"speed": 8.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -78,7 +78,7 @@ gravity = 9.8
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 z_index = 3
 frames = SubResource( 2 )
-animation = "run_shoot"
+animation = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
@@ -101,7 +101,7 @@ states = {
 "RUN": NodePath("Run"),
 "SHOOT": NodePath("Shoot")
 }
-first_state = NodePath("Idle")
+firstState = NodePath("Idle")
 
 [node name="Idle" type="Node" parent="States"]
 script = ExtResource( 1 )
@@ -119,6 +119,7 @@ script = ExtResource( 25 )
 scroll_ignore_camera_zoom = true
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+visible = false
 motion_scale = Vector2( 0.01, 1 )
 motion_mirroring = Vector2( 2048, 0 )
 
@@ -129,6 +130,7 @@ texture = ExtResource( 24 )
 expand = true
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+visible = false
 motion_scale = Vector2( 0.321, 1 )
 motion_mirroring = Vector2( 2880, 0 )
 
@@ -140,6 +142,7 @@ texture = ExtResource( 23 )
 expand = true
 
 [node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
+visible = false
 motion_scale = Vector2( 0.654, 1 )
 motion_mirroring = Vector2( 4437, 0 )
 
