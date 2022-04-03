@@ -4,14 +4,13 @@ class_name State
 var host : KinematicBody2D = null
 var target : KinematicBody2D = null
 
-var animatedSprite : AnimatedSprite = null
 var animation : String
 
-
 var states : Dictionary = {}
+var previousState : NodePath
 
 func enter() -> void:
-	animatedSprite.play(animation)
+	pass
 
 func logic(delta) -> void:
 	pass
