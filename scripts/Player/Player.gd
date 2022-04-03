@@ -19,6 +19,7 @@ var velocity : Vector2 = Vector2.ZERO
 var direction : float
 
 var bullet : Resource = preload("res://scenes/PlayerBullet.tscn")
+var bulletDirection : Vector2
 
 onready var animatedSprite : AnimatedSprite = $AnimatedSprite
 
@@ -33,17 +34,22 @@ func check_lives() -> void:
 	
 func _ready():
 	
-	states.enter(self, null, animatedSprite)
+	print(bullet)
+	
+	states.enter(self, null)
 
 
 func _process(delta) -> void:
 	
 	check_lives()
 	
+	bulletDirection = get_local_mouse_position()
+	
 	
 	direction = (Input.get_action_strength("right") - Input.get_action_strength("left"))
 	
 	states.logic(delta)
+	
 	
 	if global_position.y > 4000:
 		get_tree().reload_current_scene()
