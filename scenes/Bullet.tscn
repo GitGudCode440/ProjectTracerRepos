@@ -6,7 +6,6 @@
 extents = Vector2( 18.5, 10 )
 
 [node name="Bullet" type="Area2D"]
-z_index = 2
 script = ExtResource( 1 )
 speed = 10
 
