@@ -48,7 +48,6 @@ states = {
 "CHASE": NodePath("Chase"),
 "PATROL": NodePath("Patrol")
 }
-first_state = NodePath("Patrol")
 
 [node name="Patrol" type="Node" parent="States"]
 script = ExtResource( 3 )
