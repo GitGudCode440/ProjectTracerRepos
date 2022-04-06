@@ -23,5 +23,7 @@ func get_transition(delta):
 		return states.JUMP
 	elif host.direction == 0:
 		return states.IDLE
+	elif Input.is_action_pressed("shoot"):
+		return states.SHOOT
 	else:
 		return null
