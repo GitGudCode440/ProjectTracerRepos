@@ -25,9 +25,11 @@ func enter() -> void:
 	shootTimer.connect("timeout", self, "on_ShootTimer_timeout")
 	shootTimer.start(shootTime)
 	
+	host.fieldOfView.queue_free()
+	host.ledgeDetector.queue_free()
 	
-	host.collision_layer = 4
-	host.collision_mask = 1
+	host.collision_layer = 8 #Setting collisiion layer to Ghost
+	host.collision_mask = 1 #Setting collision mask to Player
 	
 
 func logic(delta) -> void:
@@ -54,8 +56,9 @@ func chase() -> void:
 	
 	#If the drone is at a distance of more than 300 units, chase
 	#Otherwise, slowly stop.
+	 
 	
-	if host.distanceToPlayer.length() > 300:
+	if host.distanceToPlayer.length() > 200:
 		host.velocity = directionToPlayer * chaseSpeed
 	else:
 		host.velocity = lerp(host.velocity, Vector2.ZERO, 0.2)
