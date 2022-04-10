@@ -1,5 +1,9 @@
-extends State
+extends Shoot 
+
 
 func enter() -> void:
-	pass
+	shootAnimation = "run_shoot"
+	
+	.enter()
+	
 	
