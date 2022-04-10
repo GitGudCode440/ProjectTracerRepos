@@ -1,10 +1,15 @@
 extends State
+class_name Shoot
 
 var shootAnimation : String = "shoot"
+
+export(float) onready var timeLeft
+var timeSpecified : float
 
 var bulletInstance : Area2D
 
 func enter() -> void:
+	timeLeft = timeSpecified
 	
 	host.animatedSprite.play(shootAnimation)
 	
@@ -12,11 +17,17 @@ func enter() -> void:
 	
 	
 	
+func logic(delta) -> void:
+	
+	timeLeft = clamp(timeLeft - delta, 0, INF)
+	
+	
 func get_transition(delta):
 	
-	if !Input.is_action_pressed("shoot"):
+	if !Input.is_action_pressed("shoot") and timeLeft == 0:
 		return previousState
-		
+	else:
+		return null
 	
 
 
