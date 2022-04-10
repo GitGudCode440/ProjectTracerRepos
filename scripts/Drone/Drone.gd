@@ -1,4 +1,4 @@
-extends KinematicBody2D
+extends Character
 
 """ 
 	This is the parent script which possess variables for move and slide which are 
@@ -7,16 +7,11 @@ extends KinematicBody2D
 	It has a implementation for checking lives.
 """
 
-export(int) var lives
-export(int) var speed
-export(float) var gravity
 
 export(int) var detectionRange
 
 var distanceToPlayer : Vector2
 
-var velocity : Vector2 = Vector2.ZERO
-var direction : float
 
 onready var ledgeDetector  : RayCast2D = $LedgeDetector
 var ledgeOffset : int = 20
@@ -28,24 +23,18 @@ onready var sprite : Sprite = $Sprite
 
 onready var collider : CollisionShape2D = $CollisionShape2D
 
-onready var states : Node = $States
 
 onready var player : KinematicBody2D = get_tree().get_root().find_node("Player", true, false)
 
-func take_damage() -> void:
-	lives -= 1
 
-func check_lives() -> void:
-	if lives == 0:
-		queue_free()
+		
 func _ready() -> void:
-	states.enter(self, player, null) #Passing itself and target
+	states.enter(self, player) #Passing itself and target
 
 func _process(delta) -> void:
 	check_lives()
 	animate()
 	
-	print(player.global_position)
 	
 	distanceToPlayer = (player.global_position - global_position)
 	
