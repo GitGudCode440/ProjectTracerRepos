@@ -12,7 +12,11 @@ func enter() -> void:
 func logic(delta) -> void:
 	detect_ledge()
 
-
+	if host.distanceToPlayer.length() < host.detectionRange:
+		host.fieldOfView.enabled = true
+	else:
+		host.fieldOfView.enabled = false
+	
 func physics_logic(delta) -> void:
 	host.velocity.x = host.direction * host.speed
 	
@@ -29,7 +33,8 @@ func detect_ledge() -> void:
 	
 	
 	if !host.ledgeDetector.is_colliding() && host.is_on_floor():
-		change_direction()
+		change_direction() 
+
 
 func change_direction() -> void:
 	
