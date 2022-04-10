@@ -1,40 +1,38 @@
-[gd_scene load_steps=38 format=2]
+[gd_scene load_steps=36 format=2]
 
-[ext_resource path="res://scripts/Player/States/Idle.gd" type="Script" id=1]
-[ext_resource path="res://scripts/Player/Player.gd" type="Script" id=2]
-[ext_resource path="res://scripts/Player/States/Run.gd" type="Script" id=3]
-[ext_resource path="res://assets/Player/run/run-7.png" type="Texture" id=4]
-[ext_resource path="res://assets/Player/run/run-5.png" type="Texture" id=5]
-[ext_resource path="res://assets/Player/idle/idle-1.png" type="Texture" id=6]
-[ext_resource path="res://assets/Player/idle/idle-2.png" type="Texture" id=7]
-[ext_resource path="res://assets/Player/run/run-6.png" type="Texture" id=8]
-[ext_resource path="res://assets/Player/run/run-1.png" type="Texture" id=9]
-[ext_resource path="res://assets/Player/run/run-3.png" type="Texture" id=10]
-[ext_resource path="res://assets/Player/jump/jump-3.png" type="Texture" id=11]
-[ext_resource path="res://assets/Player/run/run-8.png" type="Texture" id=12]
-[ext_resource path="res://assets/Player/idle/idle-3.png" type="Texture" id=13]
-[ext_resource path="res://assets/Player/run/run-2.png" type="Texture" id=14]
-[ext_resource path="res://assets/Player/jump/jump-4.png" type="Texture" id=15]
-[ext_resource path="res://assets/Player/idle/idle-4.png" type="Texture" id=16]
-[ext_resource path="res://assets/Player/run/run-4.png" type="Texture" id=17]
-[ext_resource path="res://assets/Player/jump/jump-2.png" type="Texture" id=18]
-[ext_resource path="res://assets/Player/jump/jump-1.png" type="Texture" id=19]
+[ext_resource path="res://scripts/player/States/Idle.gd" type="Script" id=1]
+[ext_resource path="res://scripts/player/Player.gd" type="Script" id=2]
+[ext_resource path="res://scripts/player/States/Run.gd" type="Script" id=3]
+[ext_resource path="res://assets/player/run/run-7.png" type="Texture" id=4]
+[ext_resource path="res://assets/player/run/run-5.png" type="Texture" id=5]
+[ext_resource path="res://assets/player/idle/idle-1.png" type="Texture" id=6]
+[ext_resource path="res://assets/player/idle/idle-2.png" type="Texture" id=7]
+[ext_resource path="res://assets/player/run/run-6.png" type="Texture" id=8]
+[ext_resource path="res://assets/player/run/run-1.png" type="Texture" id=9]
+[ext_resource path="res://assets/player/run/run-3.png" type="Texture" id=10]
+[ext_resource path="res://assets/player/jump/jump-3.png" type="Texture" id=11]
+[ext_resource path="res://assets/player/run/run-8.png" type="Texture" id=12]
+[ext_resource path="res://assets/player/idle/idle-3.png" type="Texture" id=13]
+[ext_resource path="res://assets/player/run/run-2.png" type="Texture" id=14]
+[ext_resource path="res://assets/player/jump/jump-4.png" type="Texture" id=15]
+[ext_resource path="res://assets/player/idle/idle-4.png" type="Texture" id=16]
+[ext_resource path="res://assets/player/run/run-4.png" type="Texture" id=17]
+[ext_resource path="res://assets/player/jump/jump-2.png" type="Texture" id=18]
+[ext_resource path="res://assets/player/jump/jump-1.png" type="Texture" id=19]
 [ext_resource path="res://scripts/shared/StateMachine/state_machine.gd" type="Script" id=20]
-[ext_resource path="res://scripts/Player/States/Jump.gd" type="Script" id=21]
-[ext_resource path="res://assets/background/near-buildings-bg.png" type="Texture" id=22]
-[ext_resource path="res://assets/background/buildings-bg.png" type="Texture" id=23]
-[ext_resource path="res://assets/background/skyline-b.png" type="Texture" id=24]
-[ext_resource path="res://scripts/Player/States/Shoot.gd" type="Script" id=25]
-[ext_resource path="res://assets/Player/run_shoot/run-shoot-3.png" type="Texture" id=26]
-[ext_resource path="res://assets/Player/run_shoot/run-shoot-6.png" type="Texture" id=27]
-[ext_resource path="res://assets/Player/run_shoot/run-shoot-7.png" type="Texture" id=28]
-[ext_resource path="res://assets/Player/run_shoot/run-shoot-4.png" type="Texture" id=29]
-[ext_resource path="res://assets/Player/run_shoot/run-shoot-5.png" type="Texture" id=30]
-[ext_resource path="res://assets/Player/run_shoot/run-shoot-8.png" type="Texture" id=31]
-[ext_resource path="res://assets/Player/run_shoot/run-shoot-1.png" type="Texture" id=32]
-[ext_resource path="res://assets/Player/shoot/shoot.png" type="Texture" id=33]
-[ext_resource path="res://assets/Player/run_shoot/run-shoot-2.png" type="Texture" id=34]
-[ext_resource path="res://scripts/Player/States/RunShoot.gd" type="Script" id=35]
+[ext_resource path="res://scripts/player/States/Jump.gd" type="Script" id=21]
+[ext_resource path="res://scenes/shared/DamageSound.tscn" type="PackedScene" id=22]
+[ext_resource path="res://scripts/player/States/Shoot.gd" type="Script" id=25]
+[ext_resource path="res://assets/player/run_shoot/run-shoot-3.png" type="Texture" id=26]
+[ext_resource path="res://assets/player/run_shoot/run-shoot-6.png" type="Texture" id=27]
+[ext_resource path="res://assets/player/run_shoot/run-shoot-7.png" type="Texture" id=28]
+[ext_resource path="res://assets/player/run_shoot/run-shoot-4.png" type="Texture" id=29]
+[ext_resource path="res://assets/player/run_shoot/run-shoot-5.png" type="Texture" id=30]
+[ext_resource path="res://assets/player/run_shoot/run-shoot-8.png" type="Texture" id=31]
+[ext_resource path="res://assets/player/run_shoot/run-shoot-1.png" type="Texture" id=32]
+[ext_resource path="res://assets/player/shoot/shoot.png" type="Texture" id=33]
+[ext_resource path="res://assets/player/run_shoot/run-shoot-2.png" type="Texture" id=34]
+[ext_resource path="res://scripts/player/States/RunShoot.gd" type="Script" id=35]
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
@@ -48,15 +46,15 @@ animations = [ {
 "name": "shoot",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 19 ), ExtResource( 18 ), ExtResource( 11 ), ExtResource( 15 ) ],
-"loop": false,
-"name": "jump",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 9 ), ExtResource( 14 ), ExtResource( 10 ), ExtResource( 17 ), ExtResource( 5 ), ExtResource( 8 ), ExtResource( 4 ), ExtResource( 12 ) ],
 "loop": true,
 "name": "run",
 "speed": 8.0
+}, {
+"frames": [ ExtResource( 19 ), ExtResource( 18 ), ExtResource( 11 ), ExtResource( 15 ) ],
+"loop": false,
+"name": "jump",
+"speed": 5.0
 }, {
 "frames": [ ExtResource( 32 ), ExtResource( 34 ), ExtResource( 26 ), ExtResource( 29 ), ExtResource( 30 ), ExtResource( 27 ), ExtResource( 28 ), ExtResource( 31 ) ],
 "loop": true,
@@ -71,10 +69,10 @@ extents = Vector2( 12, 24 )
 position = Vector2( -1, 0 )
 collision_mask = 14
 script = ExtResource( 2 )
-lives = 5
+lives = 6
 speed = 500
-jumpSpeed = 600
-gravity = 9.8
+gravity = 10.0
+jumpSpeed = 500
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 z_index = 3
@@ -86,20 +84,13 @@ visible = false
 position = Vector2( 0, 8 )
 shape = SubResource( 1 )
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 348, 0 )
-current = true
-zoom = Vector2( 1.2, 1.2 )
-limit_top = 0
-limit_bottom = 3858
-smoothing_enabled = true
-
 [node name="States" type="Node" parent="."]
 script = ExtResource( 20 )
 states = {
 "IDLE": NodePath("Idle"),
 "JUMP": NodePath("Jump"),
 "RUN": NodePath("Run"),
+"RUN_SHOOT": NodePath("RunShoot"),
 "SHOOT": NodePath("Shoot")
 }
 firstState = NodePath("Idle")
@@ -115,44 +106,10 @@ script = ExtResource( 21 )
 
 [node name="Shoot" type="Node" parent="States"]
 script = ExtResource( 25 )
+timeLeft = 0.35
 
 [node name="RunShoot" type="Node" parent="States"]
 script = ExtResource( 35 )
+timeLeft = 0.35
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-scroll_ignore_camera_zoom = true
-
-[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-visible = false
-motion_scale = Vector2( 0.01, 1 )
-motion_mirroring = Vector2( 2048, 0 )
-
-[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/ParallaxLayer"]
-margin_right = 2048.0
-margin_bottom = 3840.0
-texture = ExtResource( 24 )
-expand = true
-
-[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
-visible = false
-motion_scale = Vector2( 0.321, 1 )
-motion_mirroring = Vector2( 2880, 0 )
-
-[node name="TextureRect2" type="TextureRect" parent="ParallaxBackground/ParallaxLayer2"]
-margin_top = 1358.0
-margin_right = 2880.0
-margin_bottom = 3838.0
-texture = ExtResource( 23 )
-expand = true
-
-[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
-visible = false
-motion_scale = Vector2( 0.654, 1 )
-motion_mirroring = Vector2( 4437, 0 )
-
-[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/ParallaxLayer3"]
-margin_top = 1946.0
-margin_right = 4437.0
-margin_bottom = 3827.0
-texture = ExtResource( 22 )
-expand = true
+[node name="DamageSound" parent="." instance=ExtResource( 22 )]
