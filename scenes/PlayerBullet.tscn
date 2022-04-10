@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://assets/PlayerBullet.png" type="Texture" id=1]
-[ext_resource path="res://scenes/Bullet.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/shared/Bullet.tscn" type="PackedScene" id=2]
 
 [node name="PlayerBullet" instance=ExtResource( 2 )]
 collision_mask = 10
