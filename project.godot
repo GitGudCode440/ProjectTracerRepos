@@ -14,6 +14,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scripts/shared/Bullet.gd"
 }, {
+"base": "KinematicBody2D",
+"class": "Character",
+"language": "GDScript",
+"path": "res://scripts/shared/Character.gd"
+}, {
 "base": "EditorVCSInterface",
 "class": "GitAPI",
 "language": "NativeScript",
@@ -22,7 +27,12 @@ _global_script_classes=[ {
 "base": "State",
 "class": "Run",
 "language": "GDScript",
-"path": "res://scripts/Player/States/Run.gd"
+"path": "res://scripts/player/States/Run.gd"
+}, {
+"base": "State",
+"class": "Shoot",
+"language": "GDScript",
+"path": "res://scripts/player/States/Shoot.gd"
 }, {
 "base": "Node",
 "class": "State",
@@ -36,8 +46,10 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "Bullet": "",
+"Character": "",
 "GitAPI": "",
 "Run": "",
+"Shoot": "",
 "State": "",
 "StateMachine": ""
 }
@@ -45,8 +57,15 @@ _global_script_class_icons={
 [application]
 
 config/name="Project Tracer"
-run/main_scene="res://scenes/Levels/LevelTemplate.tscn"
+run/main_scene="res://scenes/levels/LevelTemplate.tscn"
 config/icon="res://icon.png"
+
+[display]
+
+window/size/width=1280
+window/size/height=720
+window/stretch/mode="2d"
+window/stretch/aspect="keep"
 
 [gdnative]
 
