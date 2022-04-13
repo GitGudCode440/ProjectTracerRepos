@@ -15,6 +15,7 @@ func enter() -> void:
 	
 	shoot()
 	
+	animate()
 	
 	
 func logic(delta) -> void:
@@ -39,3 +40,14 @@ func shoot() -> void:
 	var direction : Vector2 = host.bulletDirection.normalized()
 	bulletInstance.set_direction(direction)
 	
+	host.direction = direction.x
+
+func animate() -> void:
+	
+	if host.direction > 0:
+		host.animatedSprite.flip_h = false
+		
+	elif host.direction < 0:
+		host.animatedSprite.flip_h = true
+		
+ 
