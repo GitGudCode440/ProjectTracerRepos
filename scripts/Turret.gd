@@ -17,6 +17,8 @@ var directionToPlayer : Vector2
 var shootTimer : Timer = Timer.new()
 export(float) var shootTime
 
+onready var damageSound : AudioStreamPlayer = $DamageSound
+
 func _ready():
 	currentState = states.IDLE
 	
@@ -32,7 +34,16 @@ func _process(delta):
 	check_lives()
 	
 	#Stores distance and direction to the player
-	distanceToPlayer = (player.global_position - global_position)
+	
+	if is_instance_valid(player):
+		distanceToPlayer = (player.global_position - global_position)
+	else:
+		distanceToPlayer = Vector2.INF
+	
+	
+	
+	
+	
 	directionToPlayer = distanceToPlayer.normalized()
 	
 	
@@ -63,6 +74,7 @@ func shoot() -> void:
 	
 	instance.set_direction(directionToPlayer.normalized())
 	
+	
 func on_ShootTimer_timeout() -> void:
 	if currentState == states.SHOOT:
 		shoot()
@@ -70,6 +82,7 @@ func on_ShootTimer_timeout() -> void:
 	
 func take_damage() -> void:
 	lives -= 1
+	damageSound.play()
 
 func check_lives() -> void: #Checks if lives are zero
 	
