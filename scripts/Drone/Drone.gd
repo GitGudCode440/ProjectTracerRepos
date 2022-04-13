@@ -35,9 +35,10 @@ func _process(delta) -> void:
 	check_lives()
 	animate()
 	
-	
-	distanceToPlayer = (player.global_position - global_position)
-	
+	if is_instance_valid(player):
+		distanceToPlayer = (player.global_position - global_position)
+	else:
+		distanceToPlayer = Vector2.INF
 	
 	states.logic(delta)
 
