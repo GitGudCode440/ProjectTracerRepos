@@ -39,6 +39,7 @@ func logic(delta) -> void:
 	
 	host.distanceToPlayer = (player.global_position - host.global_position)
 	directionToPlayer = host.distanceToPlayer.normalized()
+	host.direction = directionToPlayer.x
 	
 	
 func physics_logic(delta) -> void:
