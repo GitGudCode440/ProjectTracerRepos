@@ -15,8 +15,12 @@ var bulletDirection : Vector2
 
 onready var animatedSprite : AnimatedSprite = $AnimatedSprite
 
+func check_lives() -> void:
+	if lives == 0:
+		get_tree().reload_current_scene()
+		
 
-func _ready():
+func _ready() -> void:
 	
 	print(bullet)
 	
@@ -37,6 +41,9 @@ func _process(delta) -> void:
 	
 	if global_position.y > 4000:
 		get_tree().reload_current_scene()
+	
+	if Input.is_action_just_pressed("ui_cancel"):
+		get_tree().quit()
 	
 func _physics_process(delta) -> void:
 	
