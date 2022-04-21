@@ -32,5 +32,5 @@ func _process(delta):
 	else:
 		offset = Vector2.ZERO
 		camera.offset = offset
-		cameraShakeIntensity = 0
+		cameraShakeIntensity = lerp(cameraShakeIntensity, 0, 0.1)
 	
