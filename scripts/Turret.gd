@@ -35,10 +35,8 @@ func _process(delta):
 	
 	#Stores distance and direction to the player
 	
-	if is_instance_valid(player):
-		distanceToPlayer = (player.global_position - global_position)
-	else:
-		distanceToPlayer = Vector2.INF
+	
+	distanceToPlayer = (player.global_position - global_position)
 	
 	
 	
@@ -83,6 +81,7 @@ func on_ShootTimer_timeout() -> void:
 func take_damage() -> void:
 	lives -= 1
 	damageSound.play()
+	CameraShake.shake(0.5, 10)
 
 func check_lives() -> void: #Checks if lives are zero
 	
