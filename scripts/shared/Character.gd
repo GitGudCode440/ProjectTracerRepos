@@ -14,6 +14,7 @@ onready var damageSound : AudioStreamPlayer = $DamageSound
 func take_damage() -> void:
 	lives -= 1
 	damageSound.play()
+	CameraShake.shake(0.5, 10)
 
 func check_lives() -> void:
 	if lives == 0:
