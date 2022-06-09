@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=39 format=2]
 
 [ext_resource path="res://scripts/player/States/Idle.gd" type="Script" id=1]
 [ext_resource path="res://scripts/player/Player.gd" type="Script" id=2]
@@ -22,6 +22,8 @@
 [ext_resource path="res://scripts/shared/StateMachine/state_machine.gd" type="Script" id=20]
 [ext_resource path="res://scripts/player/States/Jump.gd" type="Script" id=21]
 [ext_resource path="res://scenes/shared/DamageSound.tscn" type="PackedScene" id=22]
+[ext_resource path="res://assets/background/buildings-bg.png" type="Texture" id=23]
+[ext_resource path="res://assets/background/skyline-b.png" type="Texture" id=24]
 [ext_resource path="res://scripts/player/States/Shoot.gd" type="Script" id=25]
 [ext_resource path="res://assets/player/run_shoot/run-shoot-3.png" type="Texture" id=26]
 [ext_resource path="res://assets/player/run_shoot/run-shoot-6.png" type="Texture" id=27]
@@ -33,6 +35,7 @@
 [ext_resource path="res://assets/player/shoot/shoot.png" type="Texture" id=33]
 [ext_resource path="res://assets/player/run_shoot/run-shoot-2.png" type="Texture" id=34]
 [ext_resource path="res://scripts/player/States/RunShoot.gd" type="Script" id=35]
+[ext_resource path="res://assets/background/near-buildings-bg.png" type="Texture" id=36]
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
@@ -46,15 +49,15 @@ animations = [ {
 "name": "shoot",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 9 ), ExtResource( 14 ), ExtResource( 10 ), ExtResource( 17 ), ExtResource( 5 ), ExtResource( 8 ), ExtResource( 4 ), ExtResource( 12 ) ],
-"loop": true,
-"name": "run",
-"speed": 8.0
-}, {
 "frames": [ ExtResource( 32 ), ExtResource( 34 ), ExtResource( 26 ), ExtResource( 29 ), ExtResource( 30 ), ExtResource( 27 ), ExtResource( 28 ), ExtResource( 31 ) ],
 "loop": true,
 "name": "run_shoot",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 9 ), ExtResource( 14 ), ExtResource( 10 ), ExtResource( 17 ), ExtResource( 5 ), ExtResource( 8 ), ExtResource( 4 ), ExtResource( 12 ) ],
+"loop": true,
+"name": "run",
+"speed": 8.0
 }, {
 "frames": [ ExtResource( 19 ), ExtResource( 18 ), ExtResource( 11 ), ExtResource( 15 ) ],
 "loop": false,
@@ -66,13 +69,12 @@ animations = [ {
 extents = Vector2( 12, 24 )
 
 [node name="Player" type="KinematicBody2D"]
-position = Vector2( -1, 0 )
 collision_mask = 14
 script = ExtResource( 2 )
 lives = 6
 speed = 500
 gravity = 10.0
-jumpSpeed = 350
+jumpSpeed = 600
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 z_index = 3
@@ -106,10 +108,55 @@ script = ExtResource( 21 )
 
 [node name="Shoot" type="Node" parent="States"]
 script = ExtResource( 25 )
-timeLeft = 0.35
+timeLeft = 0.25
 
 [node name="RunShoot" type="Node" parent="States"]
 script = ExtResource( 35 )
-timeLeft = 0.35
+timeLeft = 0.25
 
 [node name="DamageSound" parent="." instance=ExtResource( 22 )]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 480, 0 )
+current = true
+zoom = Vector2( 1.3, 1.3 )
+limit_left = 0
+limit_top = 0
+limit_bottom = 3858
+limit_smoothed = true
+smoothing_enabled = true
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+scroll_ignore_camera_zoom = true
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.01, 1 )
+motion_mirroring = Vector2( 2048, 0 )
+
+[node name="SkyBackground" type="TextureRect" parent="ParallaxBackground/ParallaxLayer"]
+margin_right = 2048.0
+margin_bottom = 3840.0
+texture = ExtResource( 24 )
+expand = true
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.569, 1 )
+motion_mirroring = Vector2( 2880, 0 )
+
+[node name="CityBackground" type="TextureRect" parent="ParallaxBackground/ParallaxLayer2"]
+margin_top = 1358.0
+margin_right = 2880.0
+margin_bottom = 3838.0
+texture = ExtResource( 23 )
+expand = true
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.895, 1 )
+motion_mirroring = Vector2( 4437, 0 )
+
+[node name="CityForeground" type="TextureRect" parent="ParallaxBackground/ParallaxLayer3"]
+margin_top = 1946.0
+margin_right = 4437.0
+margin_bottom = 3827.0
+texture = ExtResource( 36 )
+expand = true
