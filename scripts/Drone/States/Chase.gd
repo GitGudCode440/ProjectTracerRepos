@@ -28,8 +28,11 @@ func enter() -> void:
 	host.fieldOfView.queue_free()
 	host.ledgeDetector.queue_free()
 	
+	
 	host.collision_layer = 8 #Setting collisiion layer to Ghost
-	host.collision_mask = 1 #Setting collision mask to Player
+	
+	host.collision_mask = 1 #Setting collision maks to Player
+	host.set_collision_mask_bit(3, true) #and itself(Ghost)
 	
 
 func logic(delta) -> void:
