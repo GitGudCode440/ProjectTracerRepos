@@ -12,7 +12,7 @@ z_index = 3
 collision_layer = 2
 collision_mask = 5
 script = ExtResource( 1 )
-lives = 20
+lives = 12
 detectionRange = 700
 shootTime = 0.35
 
@@ -25,6 +25,7 @@ visible = false
 shape = SubResource( 1 )
 
 [node name="LineOfSight" type="RayCast2D" parent="."]
+visible = false
 cast_to = Vector2( 0, 450 )
 collision_mask = 5
 
