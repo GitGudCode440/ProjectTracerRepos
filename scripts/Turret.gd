@@ -8,6 +8,7 @@ var currentState : int
 
 onready var lineOfSight : RayCast2D = $LineOfSight
 
+
 onready var enemyLaser : Resource = preload("res://scenes/EnemyBullet.tscn")
 
 onready var player : KinematicBody2D = get_tree().get_root().find_node("Player", true, false)
@@ -18,6 +19,18 @@ var shootTimer : Timer = Timer.new()
 export(float) var shootTime
 
 onready var damageSound : AudioStreamPlayer = $DamageSound
+
+func take_damage() -> void:
+	lives -= 1
+	damageSound.play()
+	get_tree().call_group("ScoreText", "gain_score", 50)
+	
+
+func check_lives() -> void: #Checks if lives are zero
+	if lives == 0:
+		get_tree().call_group("ScoreText", "gain_score", 500)
+		queue_free()
+
 
 func _ready():
 	currentState = states.IDLE
@@ -35,12 +48,10 @@ func _process(delta):
 	
 	#Stores distance and direction to the player
 	
-	
-	distanceToPlayer = (player.global_position - global_position)
-	
-	
-	
-	
+	if is_instance_valid(player):
+		distanceToPlayer = (player.global_position - global_position)
+	else:
+		distanceToPlayer = Vector2.INF
 	
 	directionToPlayer = distanceToPlayer.normalized()
 	
@@ -48,12 +59,15 @@ func _process(delta):
 	#Calculates the amount of rotation needed in relation to the player
 	#And sets RayCast rotation to the rotation
 	var angleOfRotation = directionToPlayer.angle_to(Vector2.DOWN)
+	
 	lineOfSight.rotation = -angleOfRotation
+
 	
 	
 	#Code for detection
 	if distanceToPlayer.length() < detectionRange:
 		lineOfSight.enabled = true
+		
 		
 		if lineOfSight.get_collider() == player:
 			currentState = states.SHOOT
@@ -78,12 +92,3 @@ func on_ShootTimer_timeout() -> void:
 		shoot()
 	
 	
-func take_damage() -> void:
-	lives -= 1
-	damageSound.play()
-	CameraShake.shake(0.5, 10)
-
-func check_lives() -> void: #Checks if lives are zero
-	
-	if lives == 0:
-		queue_free()
