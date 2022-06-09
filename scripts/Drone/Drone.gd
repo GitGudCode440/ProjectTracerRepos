@@ -27,7 +27,15 @@ onready var collider : CollisionShape2D = $CollisionShape2D
 onready var player : KinematicBody2D = get_tree().get_root().find_node("Player", true, false)
 
 
-		
+func check_lives() -> void:
+	if lives == 0:
+		get_tree().call_group("ScoreText", "gain_score", 200)
+		queue_free()
+	
+func take_damage() -> void:
+	.take_damage()
+	get_tree().call_group("ScoreText", "gain_score", 20)
+
 func _ready() -> void:
 	states.enter(self, player) #Passing itself and target
 
@@ -35,7 +43,10 @@ func _process(delta) -> void:
 	check_lives()
 	animate()
 	
-	distanceToPlayer = (player.global_position - global_position)
+	if is_instance_valid(player):
+		distanceToPlayer = (player.global_position - global_position)
+	else:
+		distanceToPlayer = Vector2.INF
 	
 	states.logic(delta)
 
