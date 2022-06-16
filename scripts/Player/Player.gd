@@ -2,7 +2,7 @@ extends Character
 
 """ 
 	This is used for move and sliding kinematic body according to variables
-	defined by input. It is also where shooting and animation mechanisms are
+	defined by states. It is also where shooting and animation mechanisms are
 	implemented. Also has a life system
 """
 
@@ -14,15 +14,20 @@ var bullet : Resource = preload("res://scenes/PlayerBullet.tscn")
 var bulletDirection : Vector2
 
 onready var animatedSprite : AnimatedSprite = $AnimatedSprite
+ 
+func take_damage() -> void:
+	.take_damage()
+	get_tree().call_group("ScoreText", "gain_score", 100)
+	CameraShake.shake(0.3, 18)
+
 
 func check_lives() -> void:
 	if lives == 0:
-		get_tree().reload_current_scene()
+		game_over()
 		
 
 func _ready() -> void:
 	
-	print(bullet)
 	
 	states.enter(self, null)
 
@@ -40,7 +45,7 @@ func _process(delta) -> void:
 	
 	
 	if global_position.y > 4000:
-		get_tree().reload_current_scene()
+		game_over()
 	
 	if Input.is_action_just_pressed("ui_cancel"):
 		get_tree().quit()
@@ -63,9 +68,9 @@ func apply_gravity() -> void:
 	else:
 		velocity.y = 1
 
+func game_over() -> void:
 	
+	$Camera2D.set_as_toplevel(true)
 
 	
 
-	
-	
