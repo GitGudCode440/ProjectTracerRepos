@@ -40,7 +40,6 @@ func _ready():
 	shootTimer.connect("timeout", self, "on_ShootTimer_timeout")
 	shootTimer.start(shootTime)
 	
-	
 func _process(delta):
 	
 	#Checks if lives are zero
