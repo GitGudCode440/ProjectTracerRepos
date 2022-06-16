@@ -61,6 +61,10 @@ run/main_scene="res://scenes/Game.tscn"
 boot_splash/image="res://assets/LoadingScreen.png"
 config/icon="res://icon.png"
 
+[autoload]
+
+CameraShake="*res://singletons/CameraShake.gd"
+
 [display]
 
 window/size/width=1280
