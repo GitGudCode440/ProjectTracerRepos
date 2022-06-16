@@ -13,7 +13,9 @@ func enter() -> void:
 	
 	host.animatedSprite.play(shootAnimation)
 	
+	
 	shoot()
+	CameraShake.shake(0.1, 5)
 	
 	animate()
 	
