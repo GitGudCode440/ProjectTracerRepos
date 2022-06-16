@@ -21,16 +21,20 @@ func _process(delta):
 	
 	if !is_instance_valid(camera):
 		camera = get_tree().get_root().find_node("Camera2D", true, false)
+		return
 	
 	
 	if cameraShakeDuration != 0:
+		randomize()
 		offset = Vector2(randf() * cameraShakeIntensity, randf() * cameraShakeIntensity)
 		
 		
 		camera.offset = offset
 		
 	else:
-		offset = Vector2.ZERO
+		randomize()
+		offset = Vector2(randf() * cameraShakeIntensity, randf() * cameraShakeIntensity)
 		camera.offset = offset
-		cameraShakeIntensity = lerp(cameraShakeIntensity, 0, 0.1)
+		cameraShakeIntensity = lerp(cameraShakeIntensity, 0, 0.25)
+	
 	
