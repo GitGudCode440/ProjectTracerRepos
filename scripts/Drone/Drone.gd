@@ -39,6 +39,7 @@ func take_damage() -> void:
 func _ready() -> void:
 	states.enter(self, player) #Passing itself and target
 
+
 func _process(delta) -> void:
 	check_lives()
 	animate()
