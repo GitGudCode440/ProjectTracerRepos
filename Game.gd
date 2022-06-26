@@ -17,6 +17,11 @@ var screenManagerPath = preload("res://scenes/ScreenManager.tscn")
 
 var levelCounter = 0
 
+func _process(delta):
+	if Input.is_action_just_pressed("ui_cancel"):
+		get_tree().quit()
+
+
 func _ready():
 	level = levelPath[levelCounter].instance()
 	add_child(level)
@@ -30,7 +35,8 @@ func change_level() -> void:
 	
 	levelCounter += 1
 	
-	if levelCounter > levelPath.size():
+	if levelCounter > (levelPath.size() - 1):
+		quit_game()
 		return
 	
 	level.queue_free()
@@ -58,3 +64,5 @@ func show_game_over() -> void:
 func show_level_comp() -> void:
 	screenManager.get_node("AnimationPlayer").play("on_level_completed")
 
+func quit_game() -> void:
+	pass
