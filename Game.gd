@@ -9,7 +9,8 @@ var level
 var children
 
 var levelPath = [
-	preload("res://scenes/levels/Level1.tscn")
+	preload("res://scenes/levels/Level1.tscn"),
+	preload("res://scenes/levels/Level2.tscn")
 ]
 
 var screenManager
@@ -64,5 +65,5 @@ func show_game_over() -> void:
 func show_level_comp() -> void:
 	screenManager.get_node("AnimationPlayer").play("on_level_completed")
 
-func quit_game() -> void:
+func quit_game() -> void: #Function for going out of Game into ending.
 	pass
