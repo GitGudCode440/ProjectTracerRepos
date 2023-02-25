@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/run-shoot-7.png-93750c6ba56feb7a1cfdf7cf61f9fcb2.stex"
+path="res://.import/run-shoot-7.png-fbd0d08b6b12d380092dc09bac760cf5.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/player/run_shoot/run-shoot-7.png"
-dest_files=[ "res://.import/run-shoot-7.png-93750c6ba56feb7a1cfdf7cf61f9fcb2.stex" ]
+source_file="res://assets/Player/run_shoot/run-shoot-7.png"
+dest_files=[ "res://.import/run-shoot-7.png-fbd0d08b6b12d380092dc09bac760cf5.stex" ]
 
 [params]
 

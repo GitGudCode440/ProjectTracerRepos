@@ -19,7 +19,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scripts/shared/Character.gd"
 }, {
-"base": "EditorVCSInterface",
+"base": "",
 "class": "GitAPI",
 "language": "NativeScript",
 "path": "res://addons/godot-git-plugin/git_api.gdns"
@@ -27,12 +27,12 @@ _global_script_classes=[ {
 "base": "State",
 "class": "Run",
 "language": "GDScript",
-"path": "res://scripts/player/States/Run.gd"
+"path": "res://scripts/Player/States/Run.gd"
 }, {
 "base": "State",
 "class": "Shoot",
 "language": "GDScript",
-"path": "res://scripts/player/States/Shoot.gd"
+"path": "res://scripts/Player/States/Shoot.gd"
 }, {
 "base": "Node",
 "class": "State",

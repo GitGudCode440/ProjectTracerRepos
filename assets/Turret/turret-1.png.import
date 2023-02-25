@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/turret-1.png-1093f20c8829c2756d314d0842da2519.stex"
+path="res://.import/turret-1.png-f91b392391f9f79bc0ed81b8e83c96a7.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/turret/turret-1.png"
-dest_files=[ "res://.import/turret-1.png-1093f20c8829c2756d314d0842da2519.stex" ]
+source_file="res://assets/Turret/turret-1.png"
+dest_files=[ "res://.import/turret-1.png-f91b392391f9f79bc0ed81b8e83c96a7.stex" ]
 
 [params]
 
