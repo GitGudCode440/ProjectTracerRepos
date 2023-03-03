@@ -58,7 +58,8 @@ _global_script_class_icons={
 
 config/name="Project Tracer"
 run/main_scene="res://scenes/Game.tscn"
-boot_splash/image="res://assets/LoadingScreen.png"
+run/low_processor_mode=true
+boot_splash/image="res://LoadingScreen.png"
 config/icon="res://icon.png"
 
 [autoload]

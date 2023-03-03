@@ -21,13 +21,22 @@ tile_data = PoolIntArray( -524299, 0, 0, 917537, 0, 0, 6750241, 0, 0, 6750244, 0
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 592, 1609 )
 
-[node name="Drone" type="Node" parent="."]
+[node name="PlayerCamera" type="Camera2D" parent="."]
+offset = Vector2( 200, 0 )
+current = true
+zoom = Vector2( 1.1, 1.1 )
+limit_bottom = 3800
+smoothing_enabled = true
+smoothing_speed = 6.0
 
-[node name="Turret" type="Node" parent="."]
+[node name="Drones" type="Node" parent="."]
+
+[node name="Turrets" type="Node" parent="."]
 
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
 volume_db = -10.0
+autoplay = true
 __meta__ = {
 "_editor_description_": "A background music
 "

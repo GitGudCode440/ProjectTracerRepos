@@ -27,22 +27,17 @@ func check_lives() -> void:
 		
 
 func _ready() -> void:
-	
-	
 	states.enter(self, null)
-
-
+	
+	
 func _process(delta) -> void:
 	
 	check_lives()
 	
 	bulletDirection = get_local_mouse_position()
-	
-	
 	direction = (Input.get_action_strength("right") - Input.get_action_strength("left"))
 	
 	states.logic(delta)
-	
 	
 	if global_position.y > 4000:
 		game_over()
@@ -69,8 +64,7 @@ func apply_gravity() -> void:
 		velocity.y = 1
 
 func game_over() -> void:
-	
-	$Camera2D.set_as_toplevel(true)
-
+	get_parent().emit_signal("show_game_over")
+	queue_free()
 	
 

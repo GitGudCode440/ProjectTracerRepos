@@ -1,10 +1,11 @@
 extends Node2D
 
 onready var player : KinematicBody2D = $Player
-
+onready var playerCamera : Camera2D = $PlayerCamera
 onready var carRed : Area2D = $CarRed
 
-onready var animationPlayer : AnimationPlayer = $AnimationPlayer
+onready var drones : Node = $Drones
+onready var turrets : Node = $Turrets
 
 
 signal show_game_over
@@ -16,9 +17,8 @@ func _ready() -> void:
 	
 	pass
 
-func _process(delta) -> void:
-	pass
-	
+func _process(delta):
+	playerCamera.global_position = player.global_position
 	
 	
 func _on_CarRed_body_entered(body) -> void:

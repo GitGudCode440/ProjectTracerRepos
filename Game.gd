@@ -58,6 +58,9 @@ func reload_level() -> void:
 	level = levelPath[levelCounter].instance()
 	add_child(level)
 	
+	get_tree().paused = false
+	screenManager.get_node("AnimationPlayer").play("RESET")
+	
 func show_game_over() -> void:
 	screenManager.get_node("AnimationPlayer").play("on_game_over")
 
