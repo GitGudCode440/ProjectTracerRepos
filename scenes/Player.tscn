@@ -117,16 +117,6 @@ timeLeft = 0.25
 
 [node name="DamageSound" parent="." instance=ExtResource( 22 )]
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 480, 0 )
-current = true
-zoom = Vector2( 1.3, 1.3 )
-limit_left = 0
-limit_top = 0
-limit_bottom = 3858
-limit_smoothed = true
-smoothing_enabled = true
-
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 scroll_ignore_camera_zoom = true
 
