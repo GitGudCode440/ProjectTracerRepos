@@ -1,8 +1,8 @@
 [gd_scene load_steps=39 format=2]
 
-[ext_resource path="res://scripts/player/States/Idle.gd" type="Script" id=1]
-[ext_resource path="res://scripts/player/Player.gd" type="Script" id=2]
-[ext_resource path="res://scripts/player/States/Run.gd" type="Script" id=3]
+[ext_resource path="res://scripts/Player/Player.gd" type="Script" id=1]
+[ext_resource path="res://scripts/Player/States/Run.gd" type="Script" id=2]
+[ext_resource path="res://scripts/Player/States/Idle.gd" type="Script" id=3]
 [ext_resource path="res://assets/player/run/run-7.png" type="Texture" id=4]
 [ext_resource path="res://assets/player/run/run-5.png" type="Texture" id=5]
 [ext_resource path="res://assets/player/idle/idle-1.png" type="Texture" id=6]
@@ -19,12 +19,12 @@
 [ext_resource path="res://assets/player/run/run-4.png" type="Texture" id=17]
 [ext_resource path="res://assets/player/jump/jump-2.png" type="Texture" id=18]
 [ext_resource path="res://assets/player/jump/jump-1.png" type="Texture" id=19]
-[ext_resource path="res://scripts/shared/StateMachine/state_machine.gd" type="Script" id=20]
-[ext_resource path="res://scripts/player/States/Jump.gd" type="Script" id=21]
+[ext_resource path="res://scripts/Player/States/Jump.gd" type="Script" id=20]
+[ext_resource path="res://scripts/Player/States/Shoot.gd" type="Script" id=21]
 [ext_resource path="res://scenes/shared/DamageSound.tscn" type="PackedScene" id=22]
 [ext_resource path="res://assets/background/buildings-bg.png" type="Texture" id=23]
 [ext_resource path="res://assets/background/skyline-b.png" type="Texture" id=24]
-[ext_resource path="res://scripts/player/States/Shoot.gd" type="Script" id=25]
+[ext_resource path="res://scripts/shared/StateMachine/state_machine.gd" type="Script" id=25]
 [ext_resource path="res://assets/player/run_shoot/run-shoot-3.png" type="Texture" id=26]
 [ext_resource path="res://assets/player/run_shoot/run-shoot-6.png" type="Texture" id=27]
 [ext_resource path="res://assets/player/run_shoot/run-shoot-7.png" type="Texture" id=28]
@@ -34,7 +34,7 @@
 [ext_resource path="res://assets/player/run_shoot/run-shoot-1.png" type="Texture" id=32]
 [ext_resource path="res://assets/player/shoot/shoot.png" type="Texture" id=33]
 [ext_resource path="res://assets/player/run_shoot/run-shoot-2.png" type="Texture" id=34]
-[ext_resource path="res://scripts/player/States/RunShoot.gd" type="Script" id=35]
+[ext_resource path="res://scripts/Player/States/RunShoot.gd" type="Script" id=35]
 [ext_resource path="res://assets/background/near-buildings-bg.png" type="Texture" id=36]
 
 [sub_resource type="SpriteFrames" id=2]
@@ -44,9 +44,9 @@ animations = [ {
 "name": "idle",
 "speed": 8.0
 }, {
-"frames": [ ExtResource( 33 ) ],
-"loop": true,
-"name": "shoot",
+"frames": [ ExtResource( 19 ), ExtResource( 18 ), ExtResource( 11 ), ExtResource( 15 ) ],
+"loop": false,
+"name": "jump",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 9 ), ExtResource( 14 ), ExtResource( 10 ), ExtResource( 17 ), ExtResource( 5 ), ExtResource( 8 ), ExtResource( 4 ), ExtResource( 12 ) ],
@@ -54,14 +54,14 @@ animations = [ {
 "name": "run",
 "speed": 8.0
 }, {
-"frames": [ ExtResource( 19 ), ExtResource( 18 ), ExtResource( 11 ), ExtResource( 15 ) ],
-"loop": false,
-"name": "jump",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 32 ), ExtResource( 34 ), ExtResource( 26 ), ExtResource( 29 ), ExtResource( 30 ), ExtResource( 27 ), ExtResource( 28 ), ExtResource( 31 ) ],
 "loop": true,
 "name": "run_shoot",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 33 ) ],
+"loop": true,
+"name": "shoot",
 "speed": 5.0
 } ]
 
@@ -70,11 +70,13 @@ extents = Vector2( 12, 24 )
 
 [node name="Player" type="KinematicBody2D"]
 collision_mask = 14
-script = ExtResource( 2 )
+script = ExtResource( 1 )
 lives = 6
-speed = 500
+speed = 420
 gravity = 10.0
-jumpSpeed = 600
+jumpSpeed = 450
+accelerationRate = 0.3
+deccelerationRate = 0.8
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 scale = Vector2( 0.8, 0.8 )
@@ -88,7 +90,7 @@ position = Vector2( 0, 8 )
 shape = SubResource( 1 )
 
 [node name="States" type="Node" parent="."]
-script = ExtResource( 20 )
+script = ExtResource( 25 )
 states = {
 "IDLE": NodePath("Idle"),
 "JUMP": NodePath("Jump"),
@@ -99,21 +101,23 @@ states = {
 firstState = NodePath("Idle")
 
 [node name="Idle" type="Node" parent="States"]
-script = ExtResource( 1 )
-
-[node name="Run" type="Node" parent="States"]
 script = ExtResource( 3 )
 
+[node name="Run" type="Node" parent="States"]
+script = ExtResource( 2 )
+coyoteTime = 0.2
+
 [node name="Jump" type="Node" parent="States"]
-script = ExtResource( 21 )
+script = ExtResource( 20 )
+coyoteTime = 0.001
 
 [node name="Shoot" type="Node" parent="States"]
-script = ExtResource( 25 )
-timeLeft = 0.25
+script = ExtResource( 21 )
+timeLeft = 0.01
 
 [node name="RunShoot" type="Node" parent="States"]
 script = ExtResource( 35 )
-timeLeft = 0.25
+timeLeft = 0.01
 
 [node name="DamageSound" parent="." instance=ExtResource( 22 )]
 
