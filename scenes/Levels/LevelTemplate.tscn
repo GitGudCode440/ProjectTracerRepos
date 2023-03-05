@@ -22,12 +22,11 @@ tile_data = PoolIntArray( -524299, 0, 0, 917537, 0, 0, 6750241, 0, 0, 6750244, 0
 position = Vector2( 592, 1609 )
 
 [node name="PlayerCamera" type="Camera2D" parent="."]
-offset = Vector2( 200, 0 )
+offset = Vector2( 400, 0 )
 current = true
-zoom = Vector2( 1.1, 1.1 )
 limit_bottom = 3800
-smoothing_enabled = true
-smoothing_speed = 6.0
+limit_smoothed = true
+smoothing_speed = 8.0
 
 [node name="Drones" type="Node" parent="."]
 
