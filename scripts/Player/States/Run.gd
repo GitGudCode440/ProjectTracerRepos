@@ -10,7 +10,8 @@ func enter() -> void:
 	host.animatedSprite.play(runAnimation)
 	
 func physics_logic(delta) -> void:
-	host.velocity.x = host.direction * host.speed
+	host.velocity.x = lerp(host.velocity.x, host.direction * host.speed, host.deccelerationRate)
+	
 	
 func logic(delta) -> void:
 	
@@ -40,4 +41,5 @@ func get_transition(delta):
 		
 	else:
 		return null
+	
 	

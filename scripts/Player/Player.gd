@@ -9,6 +9,8 @@ extends Character
 
 export(int) var jumpSpeed
 
+export(float, 0.0, 1.0, 0.05) var accelerationRate
+export(float, 0.0, 1.0, 0.05) var deccelerationRate
 
 var bullet : Resource = preload("res://scenes/PlayerBullet.tscn")
 var bulletDirection : Vector2

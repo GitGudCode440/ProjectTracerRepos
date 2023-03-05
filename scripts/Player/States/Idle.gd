@@ -5,8 +5,9 @@ var idleAnimation : String = "idle"
 func enter() -> void:
 	host.animatedSprite.play(idleAnimation)
 	
-	
-	host.velocity.x = host.direction * host.speed
+
+func physics_logic(delta) -> void:
+	host.velocity.x = lerp(host.velocity.x, 0.0, host.accelerationRate)
 
 func get_transition(delta):
 	
