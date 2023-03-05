@@ -26,6 +26,7 @@ offset = Vector2( 400, 0 )
 current = true
 limit_bottom = 3800
 limit_smoothed = true
+smoothing_enabled = true
 smoothing_speed = 8.0
 
 [node name="Drones" type="Node" parent="."]

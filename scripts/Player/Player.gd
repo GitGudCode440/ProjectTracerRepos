@@ -6,7 +6,6 @@ extends Character
 	implemented. Also has a life system
 """
 
-
 export(int) var jumpSpeed
 
 export(float, 0.0, 1.0, 0.05) var accelerationRate
