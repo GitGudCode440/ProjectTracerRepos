@@ -3,6 +3,9 @@ class_name Run
 
 var runAnimation : String = "run"
 
+export(float) var coyoteTime : float = 2.0
+var coyoteTimer : float = 1.0
+
 func enter() -> void:
 	host.animatedSprite.play(runAnimation)
 	
@@ -11,18 +14,22 @@ func physics_logic(delta) -> void:
 	
 func logic(delta) -> void:
 	
+	
+	if !host.is_on_floor():
+		coyoteTimer -= 1.0 * delta
+	else:
+		coyoteTimer = coyoteTime
+	
 	if host.direction > 0:
 		host.animatedSprite.flip_h = false
 	elif host.direction < 0:
 		host.animatedSprite.flip_h = true
 	
 	
-
 func get_transition(delta):
 	
 	
-	
-	if Input.is_action_just_pressed("jump") and host.is_on_floor():
+	if Input.is_action_just_pressed("jump") and coyoteTimer > 0.0:
 		return states.JUMP
 		
 	elif host.direction == 0:
@@ -33,3 +40,4 @@ func get_transition(delta):
 		
 	else:
 		return null
+	
