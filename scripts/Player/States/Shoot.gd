@@ -22,7 +22,7 @@ func enter() -> void:
 	
 func logic(delta) -> void:
 	
-	timeLeft = clamp(timeLeft - delta, 0, INF)
+	timeLeft = max(0, timeLeft - delta)
 	
 	
 func get_transition(delta):
@@ -32,7 +32,6 @@ func get_transition(delta):
 	else:
 		return null
 	
-
 
 func shoot() -> void:
 	
