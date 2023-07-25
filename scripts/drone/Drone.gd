@@ -7,14 +7,13 @@ extends Character
 	It has a implementation for checking lives.
 """
 
-
 export(int) var detectionRange
 
 var distanceToPlayer : Vector2
 
 
 onready var ledgeDetector  : RayCast2D = $LedgeDetector
-var ledgeOffset : int = 20
+var ledgeOffset : int = 40
 
 onready var fieldOfView : RayCast2D = $FieldOfView
 var fovCast : int = 400
