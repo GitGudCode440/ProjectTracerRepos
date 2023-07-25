@@ -40,9 +40,10 @@ func logic(delta) -> void:
 	# Assigning a vector which gives us direction and ditstance of the player,
 	# in relation to itself.
 	
-	host.distanceToPlayer = (player.global_position - host.global_position)
-	directionToPlayer = host.distanceToPlayer.normalized()
-	host.direction = directionToPlayer.x
+	if (is_instance_valid(player)):
+		host.distanceToPlayer = (player.global_position - host.global_position)
+		directionToPlayer = host.distanceToPlayer.normalized()
+		host.direction = directionToPlayer.x
 	
 	
 func physics_logic(delta) -> void:
@@ -58,7 +59,7 @@ func shoot() -> void:
 	
 func chase() -> void:
 	
-	#If the drone is at a distance of more than 300 units, chase
+	#If the drone is at a distance of more than 200 units, chase
 	#Otherwise, slowly stop.
 	 
 	
