@@ -18,7 +18,8 @@ func _ready() -> void:
 	pass
 
 func _process(delta):
-	playerCamera.global_position = player.global_position
+	if (is_instance_valid(player)):
+		playerCamera.global_position = player.global_position
 	
 	
 func _on_CarRed_body_entered(body) -> void:
