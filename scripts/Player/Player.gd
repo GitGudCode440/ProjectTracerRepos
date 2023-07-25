@@ -65,7 +65,7 @@ func apply_gravity() -> void:
 		velocity.y = 1
 
 func game_over() -> void:
-	get_parent().emit_signal("show_game_over")
+	get_tree().call_group("Game", "show_game_over")
 	queue_free()
 	
 
