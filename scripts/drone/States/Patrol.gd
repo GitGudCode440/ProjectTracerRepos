@@ -44,6 +44,7 @@ func detect_ledge() -> void:
 	
 	if !host.ledgeDetector.is_colliding() && host.is_on_floor() && detectLedge:
 		change_direction() 
+		align_ray_to_direction()
 
 
 func change_direction() -> void:
