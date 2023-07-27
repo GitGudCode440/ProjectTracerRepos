@@ -2,6 +2,7 @@ extends Area2D
 class_name Bullet
 
 export(int) var speed
+export(int, 0, 10, 1) var damage
 
 var direction : Vector2
 
@@ -33,7 +34,7 @@ func _on_VisibilityNotifier2D_screen_exited():
 func _on_Bullet_body_entered(body):
 	
 	if body.has_method("take_damage"):
-		body.call_deferred("take_damage")
+		body.call_deferred("take_damage", damage) 
 	
 	queue_free()
 	
