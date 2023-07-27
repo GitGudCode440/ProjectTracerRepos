@@ -7,6 +7,7 @@ enum states {IDLE, SHOOT}
 var currentState : int 
 
 onready var lineOfSight : RayCast2D = $LineOfSight
+const ATTACK_RANGE_OFFSET = 200
 
 
 onready var enemyLaser : Resource = preload("res://scenes/EnemyBullet.tscn")
@@ -35,6 +36,7 @@ func check_lives() -> void: #Checks if lives are zero
 func _ready():
 	currentState = states.IDLE
 	
+	lineOfSight.cast_to.y = detectionRange - ATTACK_RANGE_OFFSET
 	
 	add_child(shootTimer)
 	
