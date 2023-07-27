@@ -12,3 +12,7 @@ func _ready() -> void:
 func gain_score(_score : int):
 	score += _score
 	text = scoreText + str(score)
+
+func set_score(_score : int):
+	score = _score
+	text = scoreText + str(score)
