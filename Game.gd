@@ -15,6 +15,9 @@ var screenManagerPath = preload("res://scenes/ScreenManager.tscn")
 
 var levelCounter = 0
 
+var scoreOnLevelLoad := 0
+var scoreText
+
 func _input(event):
 	if event.is_action_pressed("ui_cancel"):
 		get_tree().quit()
@@ -29,6 +32,7 @@ func _ready():
 	screenManager = screenManagerPath.instance()
 	add_child(screenManager)
 	
+	scoreText = screenManager.get_node("ScoreText")
 	
 
 func change_level() -> void:
@@ -49,6 +53,8 @@ func change_level() -> void:
 	
 	get_tree().paused = false
 	
+	scoreOnLevelLoad = scoreText.score
+	
 	screenManager.get_node("AnimationPlayer").play("RESET")
 
 func reload_level() -> void:
@@ -58,6 +64,9 @@ func reload_level() -> void:
 	add_child(level)
 	
 	get_tree().paused = false
+	
+	scoreText.set_score(scoreOnLevelLoad)
+	
 	screenManager.get_node("AnimationPlayer").play("RESET")
 	
 
@@ -72,7 +81,7 @@ func list_all_levels(_path : String) -> Array:
 		var file = dir.get_next()
 		if file == "":
 			break
-		elif not file.begins_with('.'):
+		elif not file.begins_with('.') and file.ends_with(".tscn"):
 			var res = load(_path + "/" + file)
 			files.append(res)
 	
@@ -83,6 +92,7 @@ func list_all_levels(_path : String) -> Array:
 
 func show_game_over() -> void:
 	screenManager.get_node("AnimationPlayer").play("on_game_over")
+	
 
 
 func show_level_comp() -> void:
