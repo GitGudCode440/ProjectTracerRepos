@@ -16,8 +16,8 @@ var bulletDirection : Vector2
 
 onready var animatedSprite : AnimatedSprite = $AnimatedSprite
  
-func take_damage() -> void:
-	.take_damage()
+func take_damage(_damage : int) -> void:
+	.take_damage(_damage)
 	get_tree().call_group("ScoreText", "gain_score", 100)
 	CameraShake.shake(0.3, 18)
 

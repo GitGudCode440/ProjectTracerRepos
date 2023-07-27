@@ -26,13 +26,14 @@ onready var collider : CollisionShape2D = $CollisionShape2D
 onready var player : KinematicBody2D = get_tree().get_root().find_node("Player", true, false)
 
 
+
 func check_lives() -> void:
 	if lives == 0:
 		get_tree().call_group("ScoreText", "gain_score", 200)
 		queue_free()
 	
-func take_damage() -> void:
-	.take_damage()
+func take_damage(_damage : int) -> void:
+	.take_damage(_damage)
 	get_tree().call_group("ScoreText", "gain_score", 20)
 
 func _ready() -> void:
@@ -40,6 +41,8 @@ func _ready() -> void:
 
 
 func _process(delta) -> void:
+	
+	
 	check_lives()
 	animate()
 	

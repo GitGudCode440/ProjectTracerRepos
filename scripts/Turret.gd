@@ -20,8 +20,8 @@ export(float) var shootTime
 
 onready var damageSound : AudioStreamPlayer = $DamageSound
 
-func take_damage() -> void:
-	lives -= 1
+func take_damage(_damage : int) -> void:
+	lives -= _damage
 	damageSound.play()
 	get_tree().call_group("ScoreText", "gain_score", 50)
 	
@@ -35,10 +35,13 @@ func check_lives() -> void: #Checks if lives are zero
 func _ready():
 	currentState = states.IDLE
 	
+	
 	add_child(shootTimer)
 	
 	shootTimer.connect("timeout", self, "on_ShootTimer_timeout")
 	shootTimer.start(shootTime)
+	
+	
 	
 func _process(delta):
 	
