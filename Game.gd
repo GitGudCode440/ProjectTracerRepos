@@ -32,7 +32,8 @@ func _ready():
 	screenManager = screenManagerPath.instance()
 	add_child(screenManager)
 	
-	scoreText = screenManager.get_node("ScoreText")
+	scoreText = screenManager.scoreText
+	
 	
 
 func change_level() -> void:
@@ -55,7 +56,10 @@ func change_level() -> void:
 	
 	scoreOnLevelLoad = scoreText.score
 	
-	screenManager.get_node("AnimationPlayer").play("RESET")
+	screenManager.animationPlayer.play("RESET")
+	screenManager.healthBar.resetHealth()
+	
+	
 
 func reload_level() -> void:
 	level.queue_free()
@@ -67,7 +71,10 @@ func reload_level() -> void:
 	
 	scoreText.set_score(scoreOnLevelLoad)
 	
-	screenManager.get_node("AnimationPlayer").play("RESET")
+	
+	
+	screenManager.animationPlayer.play("RESET")
+	screenManager.healthBar.reset_health()
 	
 
 func list_all_levels(_path : String) -> Array:
@@ -91,12 +98,12 @@ func list_all_levels(_path : String) -> Array:
 	
 
 func show_game_over() -> void:
-	screenManager.get_node("AnimationPlayer").play("on_game_over")
+	screenManager.animationPlayer.play("on_game_over")
 	
 
 
 func show_level_comp() -> void:
-	screenManager.get_node("AnimationPlayer").play("on_level_completed")
-
+	screenManager.animationPlayer.play("on_level_completed")
+	
 func quit_game() -> void: #Function for going out of Game into ending.
 	pass
