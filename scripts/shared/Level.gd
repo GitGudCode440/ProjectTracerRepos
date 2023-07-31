@@ -2,6 +2,8 @@ extends Node2D
 
 onready var player : KinematicBody2D = $Player
 onready var playerCamera : Camera2D = $PlayerCamera
+export var cameraOffset : int
+
 onready var carRed : Area2D = $CarRed
 
 onready var drones : Node = $Drones
@@ -20,6 +22,7 @@ func _ready() -> void:
 func _process(delta):
 	if (is_instance_valid(player)):
 		playerCamera.global_position = player.global_position
+		playerCamera.global_position.x += cameraOffset #Offseting the camera here because of some bug I can't seem to fix
 	
 	
 func _on_CarRed_body_entered(body) -> void:
