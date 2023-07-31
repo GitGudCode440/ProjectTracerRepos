@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://fonts/ethnocentric.rg-regular.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://fonts/ARCADECLASSIC.TTF" type="DynamicFontData" id=2]
@@ -6,6 +6,21 @@
 [ext_resource path="res://shaders/chr_abb/ChromaticAbberation.material" type="Material" id=4]
 [ext_resource path="res://fonts/stencil_pixel-7.ttf" type="DynamicFontData" id=5]
 [ext_resource path="res://scripts/ScoreText.gd" type="Script" id=6]
+[ext_resource path="res://assets/ui/healthbar_border.png" type="Texture" id=7]
+[ext_resource path="res://assets/ui/healthbar_fill.png" type="Texture" id=8]
+[ext_resource path="res://scenes/HealthBar.gd" type="Script" id=9]
+
+[sub_resource type="DynamicFont" id=9]
+size = 30
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+extra_spacing_char = 2
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=10]
+size = 32
+use_filter = true
+font_data = ExtResource( 1 )
 
 [sub_resource type="Animation" id=6]
 length = 0.001
@@ -508,13 +523,6 @@ tracks/14/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="DynamicFont" id=9]
-size = 30
-outline_size = 1
-outline_color = Color( 0, 0, 0, 1 )
-extra_spacing_char = 2
-font_data = ExtResource( 5 )
-
 [sub_resource type="DynamicFont" id=4]
 size = 32
 font_data = ExtResource( 2 )
@@ -533,20 +541,52 @@ pause_mode = 2
 layer = 100
 script = ExtResource( 3 )
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/RESET = SubResource( 6 )
-anims/on_game_over = SubResource( 7 )
-anims/on_level_completed = SubResource( 8 )
-
 [node name="ScoreText" type="Label" parent="." groups=["ScoreText"]]
-margin_left = 30.0
-margin_top = 30.0
-margin_right = 1280.0
-margin_bottom = 720.0
+margin_left = 24.0
+margin_top = 24.0
+margin_right = 447.0
+margin_bottom = 55.0
 custom_fonts/font = SubResource( 9 )
 text = "SCORE:  "
 uppercase = true
 script = ExtResource( 6 )
+
+[node name="HealthText" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -88.5
+margin_top = 10.0
+margin_right = 88.5
+margin_bottom = 50.0
+size_flags_horizontal = 2
+size_flags_vertical = 1
+custom_fonts/font = SubResource( 10 )
+text = "HEALTH"
+align = 1
+
+[node name="HealthBar" type="TextureProgress" parent="." groups=["HealthBar"]]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -124.5
+margin_top = 55.0
+margin_right = 124.5
+margin_bottom = 88.0
+rect_scale = Vector2( 3, 3 )
+rect_clip_content = true
+size_flags_horizontal = 3
+size_flags_vertical = 3
+max_value = 6.0
+step = 0.001
+value = 6.0
+texture_under = ExtResource( 7 )
+texture_progress = ExtResource( 8 )
+texture_progress_offset = Vector2( 2, 1 )
+script = ExtResource( 9 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 6 )
+anims/on_game_over = SubResource( 7 )
+anims/on_level_completed = SubResource( 8 )
 
 [node name="CanvasModulate" type="ColorRect" parent="."]
 anchor_right = 1.0
