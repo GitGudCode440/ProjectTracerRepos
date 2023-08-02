@@ -57,7 +57,7 @@ func change_level() -> void:
 	scoreOnLevelLoad = scoreText.score
 	
 	screenManager.animationPlayer.play("RESET")
-	screenManager.healthBar.resetHealth()
+	screenManager.healthBar.reset_health()
 	
 	
 
