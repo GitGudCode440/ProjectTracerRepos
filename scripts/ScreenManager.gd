@@ -7,11 +7,18 @@ extends CanvasLayer
 onready var gameOverButton : Control = $Screens/GameOver/CenterContainer/VBoxContainer/Button
 onready var levelCompButton : Control = $Screens/LevelCompleted/CenterContainer/VBoxContainer/Button
 
+onready var healthBar := $HealthBar
+
+onready var animationPlayer : AnimationPlayer = $AnimationPlayer
+
+onready var scoreText := $ScoreText
+
 signal change_level
 signal reload_level
 
 
 func _ready() -> void:
+	
 	
 	self.connect("change_level", get_parent(), "change_level")
 	self.connect("reload_level", get_parent(), "reload_level")
@@ -19,6 +26,7 @@ func _ready() -> void:
 
 func _on_game_over_Button_pressed():
 	emit_signal("reload_level")
+	
 
 
 func _on_level_comp_Button_pressed():
