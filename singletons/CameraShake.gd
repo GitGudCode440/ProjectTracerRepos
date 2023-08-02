@@ -5,7 +5,7 @@ var cameraShakeIntensity : float = 0.0
 
 var offset : Vector2 = Vector2.ZERO
 
-onready var camera : Camera2D = get_tree().get_root().find_node("Camera2D", true, false)
+onready var camera : Camera2D = get_tree().get_root().find_node("PlayerCamera", true, false)
 
 
 
@@ -20,7 +20,7 @@ func _process(delta):
 	cameraShakeDuration = clamp(cameraShakeDuration - delta, 0, INF)
 	
 	if !is_instance_valid(camera):
-		camera = get_tree().get_root().find_node("Camera2D", true, false)
+		camera = get_tree().get_root().find_node("PlayerCamera", true, false)
 		return
 	
 	
