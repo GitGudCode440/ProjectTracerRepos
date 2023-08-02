@@ -23,7 +23,7 @@ func take_damage(_damage : int) -> void:
 
 
 func check_lives() -> void:
-	if lives == 0:
+	if health == 0:
 		game_over()
 		
 

@@ -28,7 +28,7 @@ onready var player : KinematicBody2D = get_tree().get_root().find_node("Player",
 
 
 func check_lives() -> void:
-	if lives == 0:
+	if health == 0:
 		get_tree().call_group("ScoreText", "gain_score", 200)
 		queue_free()
 	

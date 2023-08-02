@@ -71,7 +71,7 @@ extents = Vector2( 12, 24 )
 [node name="Player" type="KinematicBody2D"]
 collision_mask = 14
 script = ExtResource( 1 )
-lives = 6
+health = 6
 speed = 420
 gravity = 10.0
 jumpSpeed = 450
