@@ -34,6 +34,7 @@ func check_lives() -> void:
 	
 func take_damage(_damage : int) -> void:
 	.take_damage(_damage)
+	CameraShake.shake(1, 1.1)
 	get_tree().call_group("ScoreText", "gain_score", 20)
 
 func _ready() -> void:
