@@ -27,7 +27,7 @@ func _ready():
 	levelRef = list_all_levels("res://scenes/levels")
 	
 	level = levelRef[levelCounter].instantiate()
-	print(level)
+	#print(level)
 	add_child(level)
 	
 	screenManager = screenManagerPath.instantiate()
@@ -83,20 +83,14 @@ func list_all_levels(_path : String) -> Array:
 	
 	var dir := DirAccess.open(_path)
 
-	dir.list_dir_begin() # TODOConverter3To4 fill missing arguments https://github.com/godotengine/godot/pull/40547
+	var allFiles = dir.get_files()
 	
+	for i in allFiles:
+		if i.ends_with(".tscn"):
+			var level = load(_path + "/" + i)
+			files.push_back(level)
+		
 	
-	while true:
-		var file = dir.get_next()
-		if file == "":
-			break
-		elif not file.begins_with('.') and file.ends_with(".tscn"):
-			print(file)
-			var res = load(_path + "/" + file)
-			
-			files.append(res)
-	
-	dir.list_dir_end()
 	
 	return files
 	
