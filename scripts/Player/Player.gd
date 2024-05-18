@@ -6,18 +6,18 @@ extends Character
 	implemented. Also has a life system
 """
 
-export(int) var jumpSpeed
+@export var jumpSpeed: int
 
-export(float, 0.0, 1.0, 0.05) var accelerationRate
-export(float, 0.0, 1.0, 0.05) var deccelerationRate
+@export_range(0.0, 1.0, 0.05) var accelerationRate: float 
+@export_range(0.0, 1.0, 0.05) var deccelerationRate: float
 
 var bullet : Resource = preload("res://scenes/PlayerBullet.tscn")
 var bulletDirection : Vector2
 
-onready var animatedSprite : AnimatedSprite = $AnimatedSprite
+@onready var animatedSprite : AnimatedSprite2D = $AnimatedSprite2D
  
 func take_damage(_damage : int) -> void:
-	.take_damage(_damage)
+	super.take_damage(_damage)
 	get_tree().call_group("ScoreText", "gain_score", 100)
 	get_tree().call_group("HealthBar", "on_playerHealth_damage", _damage)
 	CameraShake.shake(0.3, 18)
@@ -52,7 +52,10 @@ func _physics_process(delta) -> void:
 	
 	states.physics_logic(delta)
 	
-	velocity = move_and_slide(velocity, Vector2.UP)
+	set_velocity(velocity)
+	set_up_direction(Vector2.UP)
+	move_and_slide()
+	velocity = velocity
 	
 	apply_gravity()
 	states.on_collisions(delta)

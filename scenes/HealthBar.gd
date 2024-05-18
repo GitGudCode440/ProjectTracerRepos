@@ -1,11 +1,11 @@
-extends TextureProgress
+extends TextureProgressBar
 
 var health : int
-onready var healthText := get_parent().get_node("HealthText")
+@onready var healthText := get_parent().get_node("HealthText")
 
-onready var player : KinematicBody2D = get_tree().get_root().find_node("Player", true, false)
+@onready var player : CharacterBody2D = get_tree().get_root().find_child("Player", true, false)
  
-var tween : SceneTreeTween
+var tween : Tween
 
 
 func _ready():

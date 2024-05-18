@@ -3,7 +3,7 @@ class_name Run
 
 var runAnimation : String = "run"
 
-export(float) var coyoteTime : float = 2.0
+@export var coyoteTime: float = 2.0
 var coyoteTimer : float = 1.0
 
 func enter() -> void:

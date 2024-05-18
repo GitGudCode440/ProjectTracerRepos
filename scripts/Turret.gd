@@ -1,25 +1,25 @@
 extends StaticBody2D
 
-export(int) var lives
-export(int) var detectionRange 
+@export var lives: int
+@export var detectionRange: int 
 
 enum states {IDLE, SHOOT}
 var currentState : int 
 
-onready var lineOfSight : RayCast2D = $LineOfSight
+@onready var lineOfSight : RayCast2D = $LineOfSight
 const ATTACK_RANGE_OFFSET = 200
 
 
-onready var enemyLaser : Resource = preload("res://scenes/EnemyBullet.tscn")
+@onready var enemyLaser : Resource = preload("res://scenes/EnemyBullet.tscn")
 
-onready var player : KinematicBody2D = get_tree().get_root().find_node("Player", true, false)
+@onready var player : CharacterBody2D = get_tree().get_root().find_child("Player", true, false)
 var distanceToPlayer : Vector2 
 var directionToPlayer : Vector2
 
 var shootTimer : Timer = Timer.new()
-export(float) var shootTime
+@export var shootTime: float
 
-onready var damageSound : AudioStreamPlayer = $DamageSound
+@onready var damageSound : AudioStreamPlayer = $DamageSound
 
 func take_damage(_damage : int) -> void:
 	lives -= _damage
@@ -37,11 +37,11 @@ func check_lives() -> void: #Checks if lives are zero
 func _ready():
 	currentState = states.IDLE
 	
-	lineOfSight.cast_to.y = detectionRange - ATTACK_RANGE_OFFSET
+	lineOfSight.target_position.y = detectionRange - ATTACK_RANGE_OFFSET
 	
 	add_child(shootTimer)
 	
-	shootTimer.connect("timeout", self, "on_ShootTimer_timeout")
+	shootTimer.connect("timeout", Callable(self, "on_ShootTimer_timeout"))
 	shootTimer.start(shootTime)
 	
 	
@@ -85,7 +85,7 @@ func _process(delta):
 	
 func shoot() -> void:
 	
-	var instance = enemyLaser.instance()
+	var instance = enemyLaser.instantiate()
 	
 	add_child(instance)
 	

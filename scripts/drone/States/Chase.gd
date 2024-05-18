@@ -4,10 +4,10 @@ extends State
 	The state for chasing the player for drone
 """
 
-var player : KinematicBody2D
+var player : CharacterBody2D
 
-export(int) var chaseSpeed
-export(float) var shootTime
+@export var chaseSpeed: int
+@export var shootTime: float
 
 var enemyBullet : Resource = preload("res://scenes/EnemyBullet.tscn")
 
@@ -22,7 +22,7 @@ func enter() -> void:
 	
 	add_child(shootTimer)
 	
-	shootTimer.connect("timeout", self, "on_ShootTimer_timeout")
+	shootTimer.connect("timeout", Callable(self, "on_ShootTimer_timeout"))
 	shootTimer.start(shootTime)
 	
 	host.fieldOfView.queue_free()
@@ -32,7 +32,7 @@ func enter() -> void:
 	host.collision_layer = 8 #Setting collisiion layer to Ghost
 	
 	host.collision_mask = 1 #Setting collision maks to Player
-	host.set_collision_mask_bit(3, true) #and itself(Ghost)
+	host.set_collision_mask_value(3, true) #and itself(Ghost)
 	
 
 func logic(delta) -> void:
@@ -52,7 +52,7 @@ func physics_logic(delta) -> void:
 	
 func shoot() -> void:
 	
-	var instance = enemyBullet.instance()
+	var instance = enemyBullet.instantiate()
 	
 	host.add_child(instance)
 	instance.set_direction(directionToPlayer)

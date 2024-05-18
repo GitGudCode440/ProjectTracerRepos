@@ -7,23 +7,23 @@ extends Character
 	It has a implementation for checking lives.
 """
 
-export(int) var detectionRange
+@export var detectionRange: int
 
 var distanceToPlayer : Vector2
 
 
-onready var ledgeDetector  : RayCast2D = $LedgeDetector
+@onready var ledgeDetector  : RayCast2D = $LedgeDetector
 var ledgeOffset : int = 40
 
-onready var fieldOfView : RayCast2D = $FieldOfView
+@onready var fieldOfView : RayCast2D = $FieldOfView
 var fovCast : int = 400
 
-onready var sprite : Sprite = $Sprite
+@onready var sprite : Sprite2D = $Sprite2D
 
-onready var collider : CollisionShape2D = $CollisionShape2D
+@onready var collider : CollisionShape2D = $CollisionShape2D
 
 
-onready var player : KinematicBody2D = get_tree().get_root().find_node("Player", true, false)
+@onready var player : CharacterBody2D = get_tree().get_root().find_child("Player", true, false)
 
 
 
@@ -33,7 +33,7 @@ func check_lives() -> void:
 		queue_free()
 	
 func take_damage(_damage : int) -> void:
-	.take_damage(_damage)
+	super.take_damage(_damage)
 	CameraShake.shake(1, 1.1)
 	get_tree().call_group("ScoreText", "gain_score", 20)
 
@@ -57,7 +57,9 @@ func _process(delta) -> void:
 func _physics_process(delta) -> void:
 	states.physics_logic(delta)
 	
-	move_and_slide(velocity, Vector2.UP)
+	set_velocity(velocity)
+	set_up_direction(Vector2.UP)
+	move_and_slide()
 	
 	states.on_collisions(delta)
 

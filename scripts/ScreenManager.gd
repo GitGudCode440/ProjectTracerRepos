@@ -4,14 +4,14 @@ extends CanvasLayer
 	ScreenManager for dealing with UI and screens in Game
 """
 
-onready var gameOverButton : Control = $Screens/GameOver/CenterContainer/VBoxContainer/Button
-onready var levelCompButton : Control = $Screens/LevelCompleted/CenterContainer/VBoxContainer/Button
+@onready var gameOverButton : Control = $Screens/GameOver/CenterContainer/VBoxContainer/Button
+@onready var levelCompButton : Control = $Screens/LevelCompleted/CenterContainer/VBoxContainer/Button
 
-onready var healthBar := $HealthBar
+@onready var healthBar := $HealthBar
 
-onready var animationPlayer : AnimationPlayer = $AnimationPlayer
+@onready var animationPlayer : AnimationPlayer = $AnimationPlayer
 
-onready var scoreText := $ScoreText
+@onready var scoreText := $ScoreText
 
 signal change_level
 signal reload_level
@@ -20,8 +20,8 @@ signal reload_level
 func _ready() -> void:
 	
 	
-	self.connect("change_level", get_parent(), "change_level")
-	self.connect("reload_level", get_parent(), "reload_level")
+	self.connect("change_level", Callable(get_parent(), "change_level"))
+	self.connect("reload_level", Callable(get_parent(), "reload_level"))
 
 
 func _on_game_over_Button_pressed():

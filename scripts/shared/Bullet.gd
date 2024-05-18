@@ -1,13 +1,13 @@
 extends Area2D
 class_name Bullet
 
-export(int) var speed
-export(int, 0, 10, 1) var damage
+@export var speed: int
+@export var damage: int
 
 var direction : Vector2
 
 func _ready():
-	set_as_toplevel(true)
+	set_as_top_level(true)
 	global_position = get_parent().global_position
 	
 func _physics_process(delta):
@@ -23,7 +23,7 @@ func set_direction(_direction) -> void:
 	
 	var angleOfRotation = Vector2.RIGHT.angle_to(direction)
 	
-	$Sprite.rotate(angleOfRotation)
+	$Sprite2D.rotate(angleOfRotation)
 	$CollisionShape2D.rotate(angleOfRotation)
 
 

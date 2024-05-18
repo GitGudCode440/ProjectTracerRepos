@@ -4,8 +4,8 @@ extends State
 	The state for patrolling the environment for drone
 """
 
-export(bool) var detectLedge = true
-export(bool) var initialTravelLeft = false
+@export var detectLedge: bool = true
+@export var initialTravelLeft: bool = false
 
 #Redefining target as player for better readibility
 
@@ -57,7 +57,7 @@ func change_direction() -> void:
 func align_ray_to_direction() -> void: #Orients the rays according to the direction.
 	
 	host.ledgeDetector.position.x = host.ledgeOffset * host.direction
-	host.fieldOfView.cast_to.x = host.fovCast * host.direction
+	host.fieldOfView.target_position.x = host.fovCast * host.direction
 
 func apply_gravity() -> void:
 	

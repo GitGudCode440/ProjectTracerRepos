@@ -3,7 +3,7 @@ class_name Shoot
 
 var shootAnimation : String = "shoot"
 
-export(float) onready var timeLeft
+@export var timeLeft: float 
 var timeSpecified : float
 
 var bulletInstance : Area2D
@@ -35,7 +35,7 @@ func get_transition(delta):
 
 func shoot() -> void:
 	
-	bulletInstance = host.bullet.instance()
+	bulletInstance = host.bullet.instantiate()
 	host.add_child(bulletInstance)
 	
 	var direction : Vector2 = host.bulletDirection.normalized()

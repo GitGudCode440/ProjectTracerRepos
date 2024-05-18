@@ -6,17 +6,17 @@ class_name StateMachine
 	to children states according to a given transition retruned by the states.
 """
 
-export (Dictionary) onready var states
+@export var states: Dictionary
 
 
-export (NodePath) var firstState
+@export var firstState: NodePath
 var previousState : NodePath
 
 var currentState : Node
 
 
-func enter(_host : KinematicBody2D,
-			_target : KinematicBody2D) -> void:
+func enter(_host : CharacterBody2D,
+			_target : CharacterBody2D) -> void:
 	
 	
 	previousState = firstState

@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/laser7.wav-9fe2a61c8fca2c129ebe1dfeda404982.sample"
+type="AudioStreamWAV"
+uid="uid://bnukodkksqg11"
+path="res://.godot/imported/laser7.wav-9fe2a61c8fca2c129ebe1dfeda404982.sample"
 
 [deps]
 
 source_file="res://assets/audio/laser7.wav"
-dest_files=[ "res://.import/laser7.wav-9fe2a61c8fca2c129ebe1dfeda404982.sample" ]
+dest_files=["res://.godot/imported/laser7.wav-9fe2a61c8fca2c129ebe1dfeda404982.sample"]
 
 [params]
 

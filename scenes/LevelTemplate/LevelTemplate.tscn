@@ -16,7 +16,7 @@ cell_size = Vector2( 16, 16 )
 collision_layer = 4
 collision_mask = 3
 format = 1
-tile_data = PoolIntArray( 6750241, 0, 0, 6750244, 0, 0, 6750247, 0, 0, 6750250, 0, 0, 6750253, 536870912, 0, 6750256, 0, 0, 6750259, 0, 0, 6750262, 0, 0, 6750265, 0, 0, 6750268, 0, 0, 6750271, 536870912, 0, 6750274, 0, 0, 6750277, 0, 0, 6750280, 0, 0, 6750283, 0, 0 )
+tile_data = PackedInt32Array( 6750241, 0, 0, 6750244, 0, 0, 6750247, 0, 0, 6750250, 0, 0, 6750253, 536870912, 0, 6750256, 0, 0, 6750259, 0, 0, 6750262, 0, 0, 6750265, 0, 0, 6750268, 0, 0, 6750271, 536870912, 0, 6750274, 0, 0, 6750277, 0, 0, 6750280, 0, 0, 6750283, 0, 0 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 592, 1609 )
@@ -25,11 +25,11 @@ position = Vector2( 592, 1609 )
 current = true
 limit_bottom = 3800
 limit_smoothed = true
-smoothing_enabled = true
-drag_margin_left = 0.1
-drag_margin_top = 0.1
-drag_margin_right = 0.1
-drag_margin_bottom = 0.1
+position_smoothing_enabled = true
+drag_left_margin = 0.1
+drag_top_margin = 0.1
+drag_right_margin = 0.1
+drag_bottom_margin = 0.1
 
 [node name="Drones" type="Node" parent="."]
 

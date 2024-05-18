@@ -26,10 +26,11 @@ func _input(event):
 func _ready():
 	levelRef = list_all_levels("res://scenes/levels")
 	
-	level = levelRef[levelCounter].instance()
+	level = levelRef[levelCounter].instantiate()
+	print(level)
 	add_child(level)
 	
-	screenManager = screenManagerPath.instance()
+	screenManager = screenManagerPath.instantiate()
 	add_child(screenManager)
 	
 	scoreText = screenManager.scoreText
@@ -46,7 +47,7 @@ func change_level() -> void:
 	
 	level.queue_free()
 	
-	level = levelRef[levelCounter].instance()
+	level = levelRef[levelCounter].instantiate()
 	
 	
 	
@@ -64,7 +65,7 @@ func change_level() -> void:
 func reload_level() -> void:
 	level.queue_free()
 	
-	level = levelRef[levelCounter].instance()
+	level = levelRef[levelCounter].instantiate()
 	add_child(level)
 	
 	get_tree().paused = false
@@ -80,16 +81,19 @@ func reload_level() -> void:
 func list_all_levels(_path : String) -> Array:
 	var files := []
 	
-	var dir := Directory.new()
-	dir.open(_path)
-	dir.list_dir_begin()
+	var dir := DirAccess.open(_path)
+
+	dir.list_dir_begin() # TODOConverter3To4 fill missing arguments https://github.com/godotengine/godot/pull/40547
+	
 	
 	while true:
 		var file = dir.get_next()
 		if file == "":
 			break
 		elif not file.begins_with('.') and file.ends_with(".tscn"):
+			print(file)
 			var res = load(_path + "/" + file)
+			
 			files.append(res)
 	
 	dir.list_dir_end()
