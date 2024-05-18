@@ -1,28 +1,23 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=5 format=3 uid="uid://n8yx2454rv0m"]
 
-[ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
-[ext_resource path="res://tiles/Tileset.tres" type="TileSet" id=4]
-[ext_resource path="res://scripts/shared/Level.gd" type="Script" id=10]
-[ext_resource path="res://scenes/CarRed.tscn" type="PackedScene" id=13]
+[ext_resource type="PackedScene" uid="uid://x0h7lcqi1gtk" path="res://scenes/Player.tscn" id="1"]
+[ext_resource type="TileSet" uid="uid://dn75g45sn7br3" path="res://tiles/Tileset.tres" id="4"]
+[ext_resource type="Script" path="res://scripts/shared/Level.gd" id="10"]
+[ext_resource type="PackedScene" path="res://scenes/CarRed.tscn" id="13"]
 
 [node name="LevelTemplate" type="Node2D"]
-position = Vector2( -1, 0 )
-script = ExtResource( 10 )
+position = Vector2(-1, 0)
+script = ExtResource("10")
 cameraOffset = 450
 
 [node name="TileMap" type="TileMap" parent="."]
-tile_set = ExtResource( 4 )
-cell_size = Vector2( 16, 16 )
-collision_layer = 4
-collision_mask = 3
-format = 1
-tile_data = PackedInt32Array( 6750241, 0, 0, 6750244, 0, 0, 6750247, 0, 0, 6750250, 0, 0, 6750253, 536870912, 0, 6750256, 0, 0, 6750259, 0, 0, 6750262, 0, 0, 6750265, 0, 0, 6750268, 0, 0, 6750271, 536870912, 0, 6750274, 0, 0, 6750277, 0, 0, 6750280, 0, 0, 6750283, 0, 0 )
+tile_set = ExtResource("4")
+format = 2
 
-[node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 592, 1609 )
+[node name="Player" parent="." instance=ExtResource("1")]
+position = Vector2(592, 1609)
 
 [node name="PlayerCamera" type="Camera2D" parent="."]
-current = true
 limit_bottom = 3800
 limit_smoothed = true
 position_smoothing_enabled = true
@@ -35,8 +30,8 @@ drag_bottom_margin = 0.1
 
 [node name="Turrets" type="Node" parent="."]
 
-[node name="CarRed" parent="." instance=ExtResource( 13 )]
-position = Vector2( 1149, 1601 )
+[node name="CarRed" parent="." instance=ExtResource("13")]
+position = Vector2(1149, 1601)
 
 [node name="Props" type="Node" parent="."]
 

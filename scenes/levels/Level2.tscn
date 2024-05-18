@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dpmg1e1a71gep"]
 
-[ext_resource type="PackedScene" path="res://scenes/LevelTemplate/LevelTemplate.tscn" id="1"]
+[ext_resource type="PackedScene" uid="uid://n8yx2454rv0m" path="res://scenes/LevelTemplate/LevelTemplate.tscn" id="1"]
 [ext_resource type="PackedScene" path="res://scenes/Drone.tscn" id="2"]
 [ext_resource type="PackedScene" path="res://scenes/Turret.tscn" id="3"]
 
