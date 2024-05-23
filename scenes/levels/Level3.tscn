@@ -17,7 +17,6 @@ script = ExtResource("8")
 
 [node name="TileMap" parent="." index="0"]
 position = Vector2(633, 652)
-format = 2
 
 [node name="Player" parent="." index="1"]
 position = Vector2(883, 1336)
