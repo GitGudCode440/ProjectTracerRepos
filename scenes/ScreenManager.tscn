@@ -1,15 +1,16 @@
-[gd_scene load_steps=20 format=3 uid="uid://c3d87rsts63qv"]
+[gd_scene load_steps=22 format=3 uid="uid://c3d87rsts63qv"]
 
 [ext_resource type="FontFile" uid="uid://2e12k5bn1rj2" path="res://fonts/ethnocentric.rg-regular.otf" id="1"]
 [ext_resource type="FontFile" uid="uid://dinbl22ckue2r" path="res://fonts/ARCADECLASSIC.TTF" id="2"]
 [ext_resource type="Script" path="res://scripts/ScreenManager.gd" id="3"]
-[ext_resource type="Material" uid="uid://dq6ofco33jsuh" path="res://shaders/chr_abb/ChromaticAbberation.material" id="4"]
 [ext_resource type="FontFile" uid="uid://8cawrtkx7m82" path="res://fonts/stencil_pixel-7.ttf" id="5"]
 [ext_resource type="Script" path="res://scripts/ScoreText.gd" id="6"]
 [ext_resource type="Texture2D" uid="uid://dngb0qc0sul6h" path="res://assets/ui/healthbar_border.png" id="7"]
 [ext_resource type="Texture2D" uid="uid://buu7g7nd2cyu0" path="res://assets/ui/healthbar_fill.png" id="8"]
 [ext_resource type="Script" path="res://scenes/HealthBar.gd" id="9"]
 [ext_resource type="FontFile" uid="uid://0c8apty4dpap" path="res://fonts/synthekR_ldr.ttf" id="9_pcu3u"]
+[ext_resource type="Shader" path="res://shaders/chr_abb/ChromaticAbberation.gdshader" id="10_oick8"]
+[ext_resource type="Texture2D" uid="uid://byuidnp2mc06l" path="res://shaders/chr_abb/vignette.png" id="11_73hla"]
 
 [sub_resource type="Animation" id="6"]
 length = 0.001
@@ -595,6 +596,12 @@ cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
 Button/fonts/font = SubResource("4")
 Label/fonts/font = SubResource("5")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ur1i7"]
+shader = ExtResource("10_oick8")
+shader_parameter/apply = true
+shader_parameter/amount = 0.2
+shader_parameter/offsetTexture = ExtResource("11_73hla")
+
 [node name="ScreenManager" type="CanvasLayer"]
 process_mode = 3
 layer = 100
@@ -735,7 +742,7 @@ action_mode = 0
 text = "NEXT LEVEL"
 
 [node name="chr_abb" type="ColorRect" parent="."]
-material = ExtResource("4")
+material = SubResource("ShaderMaterial_ur1i7")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
