@@ -1,673 +1,742 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=20 format=3 uid="uid://c3d87rsts63qv"]
 
-[ext_resource path="res://fonts/ethnocentric.rg-regular.otf" type="FontFile" id=1]
-[ext_resource path="res://fonts/ARCADECLASSIC.TTF" type="FontFile" id=2]
-[ext_resource path="res://scripts/ScreenManager.gd" type="Script" id=3]
-[ext_resource path="res://shaders/chr_abb/ChromaticAbberation.material" type="Material" id=4]
-[ext_resource path="res://fonts/stencil_pixel-7.ttf" type="FontFile" id=5]
-[ext_resource path="res://scripts/ScoreText.gd" type="Script" id=6]
-[ext_resource path="res://assets/ui/healthbar_border.png" type="Texture2D" id=7]
-[ext_resource path="res://assets/ui/healthbar_fill.png" type="Texture2D" id=8]
-[ext_resource path="res://scenes/HealthBar.gd" type="Script" id=9]
+[ext_resource type="FontFile" uid="uid://2e12k5bn1rj2" path="res://fonts/ethnocentric.rg-regular.otf" id="1"]
+[ext_resource type="FontFile" uid="uid://dinbl22ckue2r" path="res://fonts/ARCADECLASSIC.TTF" id="2"]
+[ext_resource type="Script" path="res://scripts/ScreenManager.gd" id="3"]
+[ext_resource type="Material" uid="uid://dq6ofco33jsuh" path="res://shaders/chr_abb/ChromaticAbberation.material" id="4"]
+[ext_resource type="FontFile" uid="uid://8cawrtkx7m82" path="res://fonts/stencil_pixel-7.ttf" id="5"]
+[ext_resource type="Script" path="res://scripts/ScoreText.gd" id="6"]
+[ext_resource type="Texture2D" uid="uid://dngb0qc0sul6h" path="res://assets/ui/healthbar_border.png" id="7"]
+[ext_resource type="Texture2D" uid="uid://buu7g7nd2cyu0" path="res://assets/ui/healthbar_fill.png" id="8"]
+[ext_resource type="Script" path="res://scenes/HealthBar.gd" id="9"]
+[ext_resource type="FontFile" uid="uid://0c8apty4dpap" path="res://fonts/synthekR_ldr.ttf" id="9_pcu3u"]
 
-[sub_resource type="FontFile" id=9]
-size = 30
-outline_size = 1
-outline_color = Color( 0, 0, 0, 1 )
-extra_spacing_char = 2
-font_data = ExtResource( 5 )
-
-[sub_resource type="FontFile" id=10]
-size = 32
-use_filter = true
-font_data = ExtResource( 1 )
-
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id="6"]
 length = 0.001
 tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/path = NodePath("Screens/GameOver:modulate:r")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
 tracks/0/keys = {
-"points": PackedFloat32Array( 1, -0.25, 0, 0.25, 0 ),
-"times": PackedFloat32Array( 0 )
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
 }
 tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
 tracks/1/path = NodePath("Screens/GameOver:modulate:g")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
 tracks/1/keys = {
-"points": PackedFloat32Array( 1, -0.25, 0, 0.25, 0 ),
-"times": PackedFloat32Array( 0 )
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
 }
 tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
 tracks/2/path = NodePath("Screens/GameOver:modulate:b")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
 tracks/2/keys = {
-"points": PackedFloat32Array( 1, -0.25, 0, 0.25, 0 ),
-"times": PackedFloat32Array( 0 )
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
 }
 tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
 tracks/3/path = NodePath("Screens/GameOver:modulate:a")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
 tracks/3/keys = {
-"points": PackedFloat32Array( 0, -0.25, 0, 0.25, 0 ),
-"times": PackedFloat32Array( 0 )
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
 }
 tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
 tracks/4/path = NodePath("CanvasModulate:color:r")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
 tracks/4/keys = {
-"points": PackedFloat32Array( 0, -0.25, 0, 0.25, 0 ),
-"times": PackedFloat32Array( 0 )
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
 }
 tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
 tracks/5/path = NodePath("CanvasModulate:color:g")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
 tracks/5/keys = {
-"points": PackedFloat32Array( 0, -0.25, 0, 0.25, 0 ),
-"times": PackedFloat32Array( 0 )
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
 }
 tracks/6/type = "bezier"
+tracks/6/imported = false
+tracks/6/enabled = true
 tracks/6/path = NodePath("CanvasModulate:color:b")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
-tracks/6/imported = false
-tracks/6/enabled = true
 tracks/6/keys = {
-"points": PackedFloat32Array( 0, -0.25, 0, 0.25, 0 ),
-"times": PackedFloat32Array( 0 )
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
 }
 tracks/7/type = "bezier"
+tracks/7/imported = false
+tracks/7/enabled = true
 tracks/7/path = NodePath("CanvasModulate:color:a")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
-tracks/7/imported = false
-tracks/7/enabled = true
 tracks/7/keys = {
-"points": PackedFloat32Array( 0, -0.25, 0, 0.25, 0 ),
-"times": PackedFloat32Array( 0 )
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
 }
 tracks/8/type = "bezier"
+tracks/8/imported = false
+tracks/8/enabled = true
 tracks/8/path = NodePath("Screens/LevelCompleted:modulate:r")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
-tracks/8/imported = false
-tracks/8/enabled = true
 tracks/8/keys = {
-"points": PackedFloat32Array( 1, -0.25, 0, 0.25, 0 ),
-"times": PackedFloat32Array( 0 )
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
 }
 tracks/9/type = "bezier"
+tracks/9/imported = false
+tracks/9/enabled = true
 tracks/9/path = NodePath("Screens/LevelCompleted:modulate:g")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
-tracks/9/imported = false
-tracks/9/enabled = true
 tracks/9/keys = {
-"points": PackedFloat32Array( 1, -0.25, 0, 0.25, 0 ),
-"times": PackedFloat32Array( 0 )
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
 }
 tracks/10/type = "bezier"
+tracks/10/imported = false
+tracks/10/enabled = true
 tracks/10/path = NodePath("Screens/LevelCompleted:modulate:b")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
-tracks/10/imported = false
-tracks/10/enabled = true
 tracks/10/keys = {
-"points": PackedFloat32Array( 1, -0.25, 0, 0.25, 0 ),
-"times": PackedFloat32Array( 0 )
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
 }
 tracks/11/type = "bezier"
+tracks/11/imported = false
+tracks/11/enabled = true
 tracks/11/path = NodePath("Screens/LevelCompleted:modulate:a")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
-tracks/11/imported = false
-tracks/11/enabled = true
 tracks/11/keys = {
-"points": PackedFloat32Array( 0, -0.25, 0, 0.25, 0 ),
-"times": PackedFloat32Array( 0 )
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
 }
 tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
 tracks/12/path = NodePath("Screens:visible")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
-tracks/12/imported = false
-tracks/12/enabled = true
 tracks/12/keys = {
-"times": PackedFloat32Array( 0 ),
-"transitions": PackedFloat32Array( 1 ),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ false ]
+"values": [false]
 }
 tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
 tracks/13/path = NodePath("Screens/GameOver:visible")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
-tracks/13/imported = false
-tracks/13/enabled = true
 tracks/13/keys = {
-"times": PackedFloat32Array( 0 ),
-"transitions": PackedFloat32Array( 1 ),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [ false ]
+"values": [false]
 }
 tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
 tracks/14/path = NodePath("Screens/LevelCompleted:visible")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
-tracks/14/imported = false
-tracks/14/enabled = true
 tracks/14/keys = {
-"times": PackedFloat32Array( 0 ),
-"transitions": PackedFloat32Array( 1 ),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [ false ]
+"values": [false]
 }
 tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
 tracks/15/path = NodePath("chr_abb:material:shader_param/amount")
 tracks/15/interp = 1
 tracks/15/loop_wrap = true
-tracks/15/imported = false
-tracks/15/enabled = true
 tracks/15/keys = {
-"times": PackedFloat32Array( 0 ),
-"transitions": PackedFloat32Array( 1 ),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [ 0.2 ]
+"values": [0.2]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id="7"]
 resource_name = "on_game_over"
 tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/path = NodePath("Screens/GameOver:modulate:r")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
 tracks/0/keys = {
-"points": PackedFloat32Array( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
-"times": PackedFloat32Array( 0, 0.5, 1 )
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
 }
 tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
 tracks/1/path = NodePath("Screens/GameOver:modulate:g")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
 tracks/1/keys = {
-"points": PackedFloat32Array( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
-"times": PackedFloat32Array( 0, 0.5, 1 )
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
 }
 tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
 tracks/2/path = NodePath("Screens/GameOver:modulate:b")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
 tracks/2/keys = {
-"points": PackedFloat32Array( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
-"times": PackedFloat32Array( 0, 0.5, 1 )
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
 }
 tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
 tracks/3/path = NodePath("Screens/GameOver:modulate:a")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
 tracks/3/keys = {
-"points": PackedFloat32Array( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
-"times": PackedFloat32Array( 0, 0.5, 1 )
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
 }
 tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
 tracks/4/path = NodePath("CanvasModulate:color:r")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
 tracks/4/keys = {
-"points": PackedFloat32Array( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
-"times": PackedFloat32Array( 0, 1 )
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
 }
 tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
 tracks/5/path = NodePath("CanvasModulate:color:g")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
 tracks/5/keys = {
-"points": PackedFloat32Array( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
-"times": PackedFloat32Array( 0, 1 )
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
 }
 tracks/6/type = "bezier"
+tracks/6/imported = false
+tracks/6/enabled = true
 tracks/6/path = NodePath("CanvasModulate:color:b")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
-tracks/6/imported = false
-tracks/6/enabled = true
 tracks/6/keys = {
-"points": PackedFloat32Array( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
-"times": PackedFloat32Array( 0, 1 )
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
 }
 tracks/7/type = "bezier"
+tracks/7/imported = false
+tracks/7/enabled = true
 tracks/7/path = NodePath("CanvasModulate:color:a")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
-tracks/7/imported = false
-tracks/7/enabled = true
 tracks/7/keys = {
-"points": PackedFloat32Array( 0, -0.25, 0, 0.25, 0, 0.54902, -0.25, 0, 0.25, 0 ),
-"times": PackedFloat32Array( 0, 1 )
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
 }
 tracks/8/type = "bezier"
+tracks/8/imported = false
+tracks/8/enabled = true
 tracks/8/path = NodePath("Screens/LevelCompleted:modulate:r")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
-tracks/8/imported = false
-tracks/8/enabled = true
 tracks/8/keys = {
-"points": PackedFloat32Array( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
-"times": PackedFloat32Array( 0, 1 )
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
 }
 tracks/9/type = "bezier"
+tracks/9/imported = false
+tracks/9/enabled = true
 tracks/9/path = NodePath("Screens/LevelCompleted:modulate:g")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
-tracks/9/imported = false
-tracks/9/enabled = true
 tracks/9/keys = {
-"points": PackedFloat32Array( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
-"times": PackedFloat32Array( 0, 1 )
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
 }
 tracks/10/type = "bezier"
+tracks/10/imported = false
+tracks/10/enabled = true
 tracks/10/path = NodePath("Screens/LevelCompleted:modulate:b")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
-tracks/10/imported = false
-tracks/10/enabled = true
 tracks/10/keys = {
-"points": PackedFloat32Array( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
-"times": PackedFloat32Array( 0, 1 )
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
 }
 tracks/11/type = "bezier"
+tracks/11/imported = false
+tracks/11/enabled = true
 tracks/11/path = NodePath("Screens/LevelCompleted:modulate:a")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
-tracks/11/imported = false
-tracks/11/enabled = true
 tracks/11/keys = {
-"points": PackedFloat32Array( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
-"times": PackedFloat32Array( 0, 1 )
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
 }
 tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
 tracks/12/path = NodePath("Screens:visible")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
-tracks/12/imported = false
-tracks/12/enabled = true
 tracks/12/keys = {
-"times": PackedFloat32Array( 0 ),
-"transitions": PackedFloat32Array( 1 ),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ true ]
+"values": [true]
 }
 tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
 tracks/13/path = NodePath("Screens/GameOver:visible")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
-tracks/13/imported = false
-tracks/13/enabled = true
 tracks/13/keys = {
-"times": PackedFloat32Array( 0 ),
-"transitions": PackedFloat32Array( 1 ),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ true ]
+"values": [true]
 }
 tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
 tracks/14/path = NodePath("Screens/LevelCompleted:visible")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
-tracks/14/imported = false
-tracks/14/enabled = true
 tracks/14/keys = {
-"times": PackedFloat32Array( 0 ),
-"transitions": PackedFloat32Array( 1 ),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ false ]
+"values": [false]
 }
 tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
 tracks/15/path = NodePath("chr_abb:material:shader_param/amount")
 tracks/15/interp = 1
 tracks/15/loop_wrap = true
-tracks/15/imported = false
-tracks/15/enabled = true
 tracks/15/keys = {
-"times": PackedFloat32Array( 0, 1 ),
-"transitions": PackedFloat32Array( 1, 1 ),
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [ 0.2, 1.0 ]
+"values": [0.2, 1.0]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id="8"]
 resource_name = "on_level_completed"
 tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/path = NodePath("Screens/LevelCompleted:modulate:r")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
 tracks/0/keys = {
-"points": PackedFloat32Array( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
-"times": PackedFloat32Array( 0, 0.5, 1 )
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
 }
 tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
 tracks/1/path = NodePath("Screens/LevelCompleted:modulate:g")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
 tracks/1/keys = {
-"points": PackedFloat32Array( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
-"times": PackedFloat32Array( 0, 0.5, 1 )
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
 }
 tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
 tracks/2/path = NodePath("Screens/LevelCompleted:modulate:b")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
 tracks/2/keys = {
-"points": PackedFloat32Array( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
-"times": PackedFloat32Array( 0, 0.5, 1 )
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
 }
 tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
 tracks/3/path = NodePath("Screens/LevelCompleted:modulate:a")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
 tracks/3/keys = {
-"points": PackedFloat32Array( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
-"times": PackedFloat32Array( 0, 0.5, 1 )
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
 }
 tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
 tracks/4/path = NodePath("CanvasModulate:color:r")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
 tracks/4/keys = {
-"points": PackedFloat32Array( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
-"times": PackedFloat32Array( 0, 1 )
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
 }
 tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
 tracks/5/path = NodePath("CanvasModulate:color:g")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
 tracks/5/keys = {
-"points": PackedFloat32Array( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
-"times": PackedFloat32Array( 0, 1 )
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
 }
 tracks/6/type = "bezier"
+tracks/6/imported = false
+tracks/6/enabled = true
 tracks/6/path = NodePath("CanvasModulate:color:b")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
-tracks/6/imported = false
-tracks/6/enabled = true
 tracks/6/keys = {
-"points": PackedFloat32Array( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
-"times": PackedFloat32Array( 0, 1 )
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
 }
 tracks/7/type = "bezier"
+tracks/7/imported = false
+tracks/7/enabled = true
 tracks/7/path = NodePath("CanvasModulate:color:a")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
-tracks/7/imported = false
-tracks/7/enabled = true
 tracks/7/keys = {
-"points": PackedFloat32Array( 0, -0.25, 0, 0.25, 0, 0.54902, -0.25, 0, 0.25, 0 ),
-"times": PackedFloat32Array( 0, 1 )
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
 }
 tracks/8/type = "bezier"
+tracks/8/imported = false
+tracks/8/enabled = true
 tracks/8/path = NodePath("Screens/GameOver:modulate:r")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
-tracks/8/imported = false
-tracks/8/enabled = true
 tracks/8/keys = {
-"points": PackedFloat32Array( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
-"times": PackedFloat32Array( 0, 1 )
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
 }
 tracks/9/type = "bezier"
+tracks/9/imported = false
+tracks/9/enabled = true
 tracks/9/path = NodePath("Screens/GameOver:modulate:g")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
-tracks/9/imported = false
-tracks/9/enabled = true
 tracks/9/keys = {
-"points": PackedFloat32Array( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
-"times": PackedFloat32Array( 0, 1 )
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
 }
 tracks/10/type = "bezier"
+tracks/10/imported = false
+tracks/10/enabled = true
 tracks/10/path = NodePath("Screens/GameOver:modulate:b")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
-tracks/10/imported = false
-tracks/10/enabled = true
 tracks/10/keys = {
-"points": PackedFloat32Array( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
-"times": PackedFloat32Array( 0, 1 )
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
 }
 tracks/11/type = "bezier"
+tracks/11/imported = false
+tracks/11/enabled = true
 tracks/11/path = NodePath("Screens/GameOver:modulate:a")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
-tracks/11/imported = false
-tracks/11/enabled = true
 tracks/11/keys = {
-"points": PackedFloat32Array( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
-"times": PackedFloat32Array( 0, 1 )
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
 }
 tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
 tracks/12/path = NodePath("Screens:visible")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
-tracks/12/imported = false
-tracks/12/enabled = true
 tracks/12/keys = {
-"times": PackedFloat32Array( 0 ),
-"transitions": PackedFloat32Array( 1 ),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ true ]
+"values": [true]
 }
 tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
 tracks/13/path = NodePath("Screens/GameOver:visible")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
-tracks/13/imported = false
-tracks/13/enabled = true
 tracks/13/keys = {
-"times": PackedFloat32Array( 0 ),
-"transitions": PackedFloat32Array( 1 ),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ false ]
+"values": [false]
 }
 tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
 tracks/14/path = NodePath("Screens/LevelCompleted:visible")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
-tracks/14/imported = false
-tracks/14/enabled = true
 tracks/14/keys = {
-"times": PackedFloat32Array( 0 ),
-"transitions": PackedFloat32Array( 1 ),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ true ]
+"values": [true]
 }
 
-[sub_resource type="FontFile" id=4]
-size = 32
-font_data = ExtResource( 2 )
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sg76p"]
+_data = {
+"RESET": SubResource("6"),
+"on_game_over": SubResource("7"),
+"on_level_completed": SubResource("8")
+}
 
-[sub_resource type="FontFile" id=5]
-size = 32
-use_filter = true
-font_data = ExtResource( 1 )
+[sub_resource type="FontFile" id="9"]
+fallbacks = Array[Font]([ExtResource("5")])
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
 
-[sub_resource type="Theme" id=3]
-Button/fonts/font = SubResource( 4 )
-Label/fonts/font = SubResource( 5 )
+[sub_resource type="FontFile" id="10"]
+fallbacks = Array[Font]([ExtResource("1")])
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
+
+[sub_resource type="FontFile" id="4"]
+fallbacks = Array[Font]([ExtResource("2")])
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
+
+[sub_resource type="FontFile" id="5"]
+fallbacks = Array[Font]([ExtResource("1")])
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
+
+[sub_resource type="Theme" id="3"]
+Button/fonts/font = SubResource("4")
+Label/fonts/font = SubResource("5")
 
 [node name="ScreenManager" type="CanvasLayer"]
 process_mode = 3
 layer = 100
-script = ExtResource( 3 )
+script = ExtResource("3")
 
-[node name="ScoreText" type="Label" parent="." groups=["ScoreText"]]
-offset_left = 24.0
-offset_top = 24.0
-offset_right = 447.0
-offset_bottom = 55.0
-theme_override_fonts/font = SubResource( 9 )
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_sg76p")
+}
+
+[node name="CanvasModulate" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0)
+
+[node name="GUI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="GUI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="ScoreText" type="Label" parent="GUI/MarginContainer" groups=["ScoreText"]]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_fonts/font = SubResource("9")
 text = "SCORE:  "
 uppercase = true
-script = ExtResource( 6 )
+script = ExtResource("6")
 
-[node name="HealthText" type="Label" parent="."]
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -88.5
-offset_top = 10.0
-offset_right = 88.5
-offset_bottom = 50.0
-size_flags_horizontal = 2
-size_flags_vertical = 1
-theme_override_fonts/font = SubResource( 10 )
+[node name="VBoxContainer" type="VBoxContainer" parent="GUI/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_constants/separation = 8
+
+[node name="HealthText" type="Label" parent="GUI/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_fonts/font = SubResource("10")
 text = "HEALTH"
-align = 1
 
-[node name="HealthBar" type="TextureProgressBar" parent="." groups=["HealthBar"]]
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -124.5
-offset_top = 55.0
-offset_right = 124.5
-offset_bottom = 88.0
-scale = Vector2( 3, 3 )
+[node name="HealthBar" type="TextureProgressBar" parent="GUI/MarginContainer/VBoxContainer" groups=["HealthBar"]]
 clip_contents = true
-size_flags_horizontal = 3
-size_flags_vertical = 3
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
 max_value = 6.0
 step = 0.001
 value = 6.0
-texture_under = ExtResource( 7 )
-texture_progress = ExtResource( 8 )
-texture_progress_offset = Vector2( 2, 1 )
-script = ExtResource( 9 )
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/RESET = SubResource( 6 )
-anims/on_game_over = SubResource( 7 )
-anims/on_level_completed = SubResource( 8 )
-
-[node name="CanvasModulate" type="ColorRect" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
-color = Color( 0, 0, 0, 0 )
+texture_under = ExtResource("7")
+texture_progress = ExtResource("8")
+texture_progress_offset = Vector2(2, 1)
+script = ExtResource("9")
 
 [node name="Screens" type="Control" parent="."]
 visible = false
+layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-theme = SubResource( 3 )
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("3")
 
 [node name="GameOver" type="Control" parent="Screens"]
 visible = false
-modulate = Color( 1, 1, 1, 0 )
+modulate = Color(0, 0, 0, 0)
+anchors_preset = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
 
 [node name="CenterContainer" type="CenterContainer" parent="Screens/GameOver"]
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Screens/GameOver/CenterContainer"]
-offset_left = 497.0
-offset_top = 313.0
-offset_right = 783.0
-offset_bottom = 407.0
+layout_mode = 2
 theme_override_constants/separation = 15
 alignment = 1
 
 [node name="Text" type="Label" parent="Screens/GameOver/CenterContainer/VBoxContainer"]
-offset_right = 286.0
-offset_bottom = 40.0
+layout_mode = 2
+theme_override_fonts/font = ExtResource("9_pcu3u")
 text = "GAME OVER!"
-align = 1
-valign = 1
 uppercase = true
 
 [node name="Button" type="Button" parent="Screens/GameOver/CenterContainer/VBoxContainer"]
-offset_left = 74.0
-offset_top = 55.0
-offset_right = 212.0
-offset_bottom = 94.0
+layout_mode = 2
 size_flags_horizontal = 4
 action_mode = 0
 text = "RESTART"
 
 [node name="LevelCompleted" type="Control" parent="Screens"]
 visible = false
-modulate = Color( 1, 1, 1, 0 )
+modulate = Color(0, 0, 0, 0)
+anchors_preset = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="CenterContainer" type="CenterContainer" parent="Screens/LevelCompleted"]
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Screens/LevelCompleted/CenterContainer"]
-offset_left = 466.0
-offset_top = 313.0
-offset_right = 814.0
-offset_bottom = 407.0
+layout_mode = 2
 theme_override_constants/separation = 15
 
 [node name="Text" type="Label" parent="Screens/LevelCompleted/CenterContainer/VBoxContainer"]
-offset_right = 348.0
-offset_bottom = 40.0
+layout_mode = 2
 text = "Level Finished"
 
 [node name="Button" type="Button" parent="Screens/LevelCompleted/CenterContainer/VBoxContainer"]
-offset_left = 85.0
-offset_top = 55.0
-offset_right = 263.0
-offset_bottom = 94.0
+layout_mode = 2
 size_flags_horizontal = 4
 action_mode = 0
 text = "NEXT LEVEL"
 
 [node name="chr_abb" type="ColorRect" parent="."]
-material = ExtResource( 4 )
+material = ExtResource("4")
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
