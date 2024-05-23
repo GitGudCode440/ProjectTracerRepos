@@ -4,7 +4,7 @@ uniform bool apply = true;
 uniform float amount = 1.0;
 uniform sampler2D offsetTexture: hint_default_white;
 
-uniform sampler2D SCREEN_TEXTURE: hint_screen_texture;
+uniform sampler2D SCREEN_TEXTURE: hint_screen_texture, filter_linear;
 
 void fragment() {
 	vec4 texture_color = texture(SCREEN_TEXTURE, SCREEN_UV);
