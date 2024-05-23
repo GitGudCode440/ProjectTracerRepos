@@ -1,8 +1,8 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=2 format=3 uid="uid://dxkooyidtwu5t"]
 
-[ext_resource path="res://assets/audio/backgroundMusic.ogg" type="AudioStream" id=2]
+[ext_resource type="AudioStream" uid="uid://ro1yinndb3sy" path="res://assets/audio/backgroundMusic.ogg" id="2"]
 
 [node name="AudioManager" type="AudioStreamPlayer"]
-stream = ExtResource( 2 )
+stream = ExtResource("2")
 volume_db = -20.0
 autoplay = true

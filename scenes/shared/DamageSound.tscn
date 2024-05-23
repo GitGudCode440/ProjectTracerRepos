@@ -1,7 +1,7 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=2 format=3 uid="uid://bcmg0q4j6c1fb"]
 
-[ext_resource path="res://assets/audio/hit01.wav" type="AudioStream" id=1]
+[ext_resource type="AudioStream" uid="uid://d8oh2gbet41m" path="res://assets/audio/hit01.wav" id="1"]
 
 [node name="DamageSound" type="AudioStreamPlayer"]
-stream = ExtResource( 1 )
+stream = ExtResource("1")
 volume_db = -10.0
