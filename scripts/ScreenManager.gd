@@ -4,14 +4,14 @@ extends CanvasLayer
 	ScreenManager for dealing with UI and screens in Game
 """
 
-@onready var gameOverButton : Control = $Screens/GameOver/CenterContainer/VBoxContainer/Button
-@onready var levelCompButton : Control = $Screens/LevelCompleted/CenterContainer/VBoxContainer/Button
+@onready var gameOverButton : Button = $Screens/GameOver/VBoxContainer/Button
+@onready var levelCompButton : Button = $Screens/LevelCompleted/VBoxContainer/Button
 
-@onready var healthBar := $HealthBar
+@onready var healthBar := $GUI/MarginContainer/VBoxContainer/HealthBar
 
 @onready var animationPlayer : AnimationPlayer = $AnimationPlayer
 
-@onready var scoreText := $ScoreText
+@onready var scoreText := $GUI/MarginContainer/ScoreText
 
 signal change_level
 signal reload_level
